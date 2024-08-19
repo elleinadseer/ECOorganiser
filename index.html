@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+         <meta charset="UTF-8" />
+         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+         <link rel="stylesheet" href="./assets/style.css">
+<title> ECO Organiser </title>
+ </head>
+     <body> 
+
+        <form id="sendableForm">
+            <label for="fName">Forename:</label>
+            <input type="text" id="fName">
+            <label for="sName">Surname:</label>
+            <input type="text" id="sName">
+            <label for="tel">Telephone Number:</label>
+            <input type="tel" id="tel">
+
+            <label for="postcode">Postcode:</label>
+            <input type="text" id="postcode">
+            <label for="street">Street:</label>
+            <input type="text" id="street" readonly>
+            <label for="city">City:</label>
+            <input type="text" id="city" readonly>
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" readonly>
+
+            <form id="schema">
+                <label for="scheme">Scheme:</label>
+                <select>
+                    <option id="HTHG">Help to Heat Group</option>
+                    <option id="flex">Flex</option>
+                    <option id="GBIS">Green Business Incentive Scheme</option>
+                    <option id="GE">General Eligibility</option>
+                </select>
+
+                <input type="checkbox"> DWP Match
+                <label for="URN">URN:</label>
+                <input type="number" id="URN">
+            </form>
+
+            <label for="occupanyEvidence">Occupany Evidence:</label>
+            <select>
+                <option id="utilityBill">Utility Bill</option>
+                <option id="mortgageStatement">Mortgage Statement</option>
+                <option id="NHSletter">NHS Letter</option>
+                <option id="other">Other</option>
+            </select>
+
+            <label for="tenancy">Tenancy:</label>
+            <select>
+                <option id="privateTenant">Private Tenant</option>
+                <option id="ownerOccupied">Owner Occupied</option>
+                <option id="socialHousing">Social Housing</option>
+            </select>
+            <label for="landlord">Landlord:</label>
+            <input type="text" id="landlord">
+
+            <label for="surveyDate">Survey Date:</label>
+            <input type="date" id="surveyDate">
+
+            <label for="propertyType">Property Type:</label>
+            <select>
+                <option id="house">House</option>
+                <option id="flat">Flat</option>
+                <option id="parkHome">Park Home</option>
+            </select>
+        
+        </form>
+
+     </body>
+</head>
