@@ -9,15 +9,16 @@ Occupancy Evidence (Utility bill default)
 Tenancy 
 Landlord (if app.)
 
-Property Type 
 Survey Date / Submission Date / Install Date 
+Property Type 
+
 Floor Area / SAP Rating 
+Main Property - Wall Type - Room Height - Wall Perimeter - Roof Type - Roof Area 
 RdSAP ref num (EPR)
 Year of Property 
 
 PAS Measure: 
 Installer
-Main Property - Wall Type - Room Height - Wall Perimeter - Roof Type - Roof Area 
 POPTs
 
 Tax Band if GE 
