@@ -24,6 +24,21 @@ POPTs
 Tax Band if GE 
 
 -----
+Front Sheet:
+Address
+Names
+Phone num
+Tenancy 
+Retrofit assessor (Harley Thorne)
+Landlord 
+Survey Date
+Survey Logment date
+Design Date
+Measure 1 - installer - install Date
+Ventilation date 
+Handover Date 
+EPR Jumps 
+
 Guarantee Registry: 
 ECO/GBIS 
 Home Improvement Installed 
