@@ -1,0 +1,83 @@
+Forename
+Surname 
+Telephone number 
+Post Code / Addresss
+ECO4 Route:
+URN
+Tax Band if GE 
+Occupancy Evidence (Utility bill default)
+Tenancy 
+Landlord (if app.)
+Property Type 
+Survey Date / Submission Date / Install Date 
+Floor Area / SAP Rating 
+RdSAP ref num (EPR)
+Year of Property 
+PAS Measure: 
+Installer
+Main Property - Wall Type - Room Height - Wall Perimeter - Roof Type - Roof Area 
+POPTs
+
+
+-----
+Guarantee Registry: 
+ECO/GBIS 
+Home Improvement Installed 
+Manufacturer
+Install Value
+Install Data 
+URN (Data Match)
+Address 
+Property Type 
+New Build?
+Names
+Mobile number
+
+Partner Portal:
+ECO Scheme 
+Measure reference num:
+Installer Project Reference:
+Postcode
+Country
+Property Type 
+Tenure 
+Landlord name (if app.)
+Evidence of premises requirements
+Customer name 
+Mobile number
+-
+Measure category
+Ex: LI Measure name 
+POPT 
+Install Date
+HHCRO Eligibility 
+HTHG verification num 
+DWP Ref num (EPR)
+
+Smart Pack:
+Names 
+tel num 
+Address
+Post code
+ECO4 Route
+Occupancy Evidence
+Tenancy 
+Landlord (if app.)
+Assessment Date (survey date)
+Submission Date (Survey Lodgement Date)
+Property Type
+Floor Area
+SAP Rating
+RdSAP ref num (EPR)
+Year of Property 
+TTZC Heating Measures 
+PAS Measure - Installer Company - Installer - Pas Certificate
+Radiators (TTZC)
+Main Property - Wall Type - Room Height - Wall Perimeter - Roof Type - Roof Area 
+POPT
+Gas Safe 
+What PIBI is needed 
+Risk Grade 
+Construction and Built Form 
+IOs 
+Install Date for Minor Works & CFF 
