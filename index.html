@@ -4,19 +4,42 @@
          <meta charset="UTF-8" />
          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-         <link rel="stylesheet" href="./assets/style.css">
+         <link rel="stylesheet" href="style.css">
 <title> ECO Organiser </title>
  </head>
      <body> 
 
+     <section class="formContainer">
         <form id="sendableForm">
+        
+        <section class="frontSheetInfo">
+
+        <div id="names">
             <label for="fName">Forename:</label>
             <input type="text" id="fName">
             <label for="sName">Surname:</label>
             <input type="text" id="sName">
+        </div>
+
+        <div id="telNo">
             <label for="tel">Telephone Number:</label>
             <input type="tel" id="tel">
+        </div>
 
+        <div id="tenancyCont">
+            <label for="tenancy">Tenancy:</label>
+            <select>
+                <option id="privateTenant">Private Tenant</option>
+                <option id="ownerOccupied">Owner Occupied</option>
+                <option id="socialHousing">Social Housing</option>
+            </select>
+          <div id="landlordDiv">
+            <label for="landlord">Landlord:</label>
+            <input type="text" id="landlord">
+          </div>
+        </div>
+
+        <div id="address">
             <label for="postcode">Postcode:</label>
             <input type="text" id="postcode">
             <label for="street">Street:</label>
@@ -25,6 +48,23 @@
             <input type="text" id="city" readonly>
             <label for="state">State:</label>
             <input type="text" id="state" name="state" readonly>
+        </div>
+
+        <div id="dates">
+            <label for="surveyDate">Survey Date:</label>
+            <input type="date" id="surveyDate">
+            <label for="submissionDate">Submission Date:</label>
+            <input type="date" id="submissionDate">
+            <label for="installDate">Install Date:</label>
+            <input type="date" id="installDate">
+        </div>
+
+        <div id="measurements"></div>
+            <label for="floorArea">Floor Area:</label>
+            <input type="number" id="floorArea">
+            <label for="SAPrating">SAP Rating:</label>
+            <input type="number" id="SAPrating">      
+        </div></section>
 
                 <label for="scheme">Scheme:</label>
                 <select>
@@ -46,22 +86,6 @@
                 <option id="other">Other</option>
             </select>
 
-            <label for="tenancy">Tenancy:</label>
-            <select>
-                <option id="privateTenant">Private Tenant</option>
-                <option id="ownerOccupied">Owner Occupied</option>
-                <option id="socialHousing">Social Housing</option>
-            </select>
-            <label for="landlord">Landlord:</label>
-            <input type="text" id="landlord">
-
-            <label for="surveyDate">Survey Date:</label>
-            <input type="date" id="surveyDate">
-            <label for="submissionDate">Submission Date:</label>
-            <input type="date" id="submissionDate">
-            <label for="installDate">Install Date:</label>
-            <input type="date" id="installDate">
-
             <label for="propertyType">Property Type:</label>
             <select>
                 <option id="house">House</option>
@@ -73,10 +97,7 @@
 
             <label for="rdsapNum">RdSAP Reference Number:</label>
             <input type="number" id="rdsapNum">
-            <label for="floorArea">Floor Area:</label>
-            <input type="number" id="floorArea">
-            <label for="SAPrating">SAP Rating:</label>
-            <input type="number" id="SAPrating">
+
 
             <label>Main Property:</label>
             Wall Type - Room Height - Wall Perimeter - Roof Type - Roof Area 
@@ -132,7 +153,7 @@
             <label for="POPT">POPT:</label>
             <input type="number" id="POPT">
         </form>
-
+    </section>
 
 
         <script src="script.js"></script>

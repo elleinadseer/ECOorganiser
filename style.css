@@ -1,0 +1,22 @@
+.formContainer {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.frontSheetInfo {
+    display: flex;
+    gap: 10px;
+}
+
+#names {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+input { height: 12px; }
+select { height: 21px; }
+
+#landlordDiv {
+    display: none;
+}
