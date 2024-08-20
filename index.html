@@ -87,17 +87,19 @@
         </select>
     </div>
 
-    <div class="column"><label>Installer Company:</label>
+        <div class="column"><label>Installer Company:</label>
         <input id="installerCompany"></input></div>
 
         <div class="column"><label>Installer Name:</label>
         <input id="installerName"></input></div>
 
         <div class="column"><label for="POPT">POPT:</label>
-        <input type="number" id="POPT"></section></div>
+        <input type="text" id="POPT"></section></div>
     </section>
 
-                <label for="scheme">Scheme:</label>
+    <section class="underForm">
+        <div class="column">
+            <label for="scheme">Scheme:</label>
                 <select>
                     <option id="HTHG">Help to Heat Group</option>
                     <option id="flex">Flex</option>
@@ -105,10 +107,13 @@
                     <option id="GE">General Eligibility</option>
                 </select>
 
-                <input type="checkbox"> DWP Match
+                <span class="inline"><label for="DWPmatch">DWP Match</label> <input type="checkbox" id="DWPmatch"></span>
+                <div id="URNdisplay">
                 <label for="URN">URN:</label>
                 <input type="number" id="URN">
+        </div></div>
 
+        <div class="column">
             <label for="occupanyEvidence">Occupany Evidence:</label>
             <select>
                 <option id="utilityBill">Utility Bill</option>
@@ -116,7 +121,9 @@
                 <option id="NHSletter">NHS Letter</option>
                 <option id="other">Other</option>
             </select>
+        </div>
 
+        <div class="column">
             <label for="propertyType">Property Type:</label>
             <select>
                 <option id="house">House</option>
@@ -125,14 +132,18 @@
             </select>
             <label for="yearOfProperty">Year of Property:</label>
             <input type="number" id="yearOfProperty">
+        </div>
 
+        <div class="column">
             <label for="rdsapNum">RdSAP Reference Number:</label>
             <input type="number" id="rdsapNum">
+        </div>
+        </section>
 
-
+        <section class="propertyMeasures">
             <label>Main Property:</label>
-            Wall Type - Room Height - Wall Perimeter - Roof Type - Roof Area 
-            <label for="wallConstruction">Wall Construction</label>
+
+            <div class="column"><label for="wallConstruction">Wall Construction</label>
             <select>
                 <option id="solidBrick">Solid Brick</option>
                 <option id="cavity">Cavity</option>
@@ -140,11 +151,19 @@
                 <option id="solidStone">Solid Stone</option>
                 <option id="system">System</option>
                 <option id="timber">Timber</option>
-            </select>
+            </select></div>
+        
+        <div class="column">
             <label for="roomHeight">Room Height:</label>
             <input type="number" id="roomHeight">
+        </div>
+            
+        <div class="column">
             <label for="wallPerimeter">Wall Perimeter:</label>
             <input type="number" id="wallPerimeter">
+        </div>
+
+        <div class="column">
             <label for="roofType">Roof Type:</label>
             <select>
                 <option id="flat">Flat</option>
@@ -152,10 +171,13 @@
                 <option id="RIR">RIR</option>
                 <option id="sloped">Sloped</option>
             </select>
+        </div>
+        
+        <div class="column">
             <label for="roofArea">Roof Area:</label>
             <input type="number" id="roofArea">
-        
-        
+        </div>
+        </section>
         
         </form>
     </section>

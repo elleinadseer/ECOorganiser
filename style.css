@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-.frontSheetInfo {
+.frontSheetInfo, .underForm, .propertyMeasures {
     display: flex;
     gap: 25px;
     justify-content: center;
@@ -15,20 +15,22 @@
     gap: 10px;
 }
 
-.measuresContainer {
+.measuresCont {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 50px;
     padding-top: 10px;
+    justify-content: center;
 }
 
 #names {width: 150px}
 #telNo {width: 128px}
 #measurements {width: 50px}
+#POPT {width: 40px;}
 
 input { height: 12px; }
 select { height: 21px; }
 
-#landlordDiv {
+#landlordDiv, #URNdisplay {
     display: none;
 }
