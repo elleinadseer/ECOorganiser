@@ -8,10 +8,13 @@
     gap: 10px;
 }
 
-#names {
-    width: 150px;
+#names + #tenancyCont + #address + #dates + #measurements {
     display: flex;
     flex-direction: column;
+}
+
+#names, #address {
+    width: 150px;
 }
 
 input { height: 12px; }
