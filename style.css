@@ -9,10 +9,17 @@
     justify-content: center;
 }
 
-#names, #personalDetails, #address, #dates, #measurements {
+.column, #names, #personalDetails, #address, #dates, #measurements, #measuresCont {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.measuresContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 10px;
 }
 
 #names {width: 150px}
