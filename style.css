@@ -5,15 +5,19 @@
 
 .frontSheetInfo {
     display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+#names, #personalDetails, #address, #dates, #measurements {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
-#names, #tenancyCont, #address, #dates, #measurements {
-    display: flex;
-    flex-direction: column;
-}
-
-#names {width: 150px;}
+#names {width: 150px}
+#telNo {width: 128px}
+#measurements {width: 50px}
 
 input { height: 12px; }
 select { height: 21px; }
