@@ -8,14 +8,12 @@
     gap: 10px;
 }
 
-#names + #tenancyCont + #address + #dates + #measurements {
+#names, #tenancyCont, #address, #dates, #measurements {
     display: flex;
     flex-direction: column;
 }
 
-#names, #address {
-    width: 150px;
-}
+#names {width: 150px;}
 
 input { height: 12px; }
 select { height: 21px; }
