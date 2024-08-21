@@ -1,4 +1,17 @@
-.formContainer {
-    display: grid;
-    justify-items: center;
-}
+.frontSheetInfo {
+  display: grid;
+  grid-template-columns: 190px 150px 200px repeat(2, 150px);
+  grid-template-rows: 100px 100px;
+  grid-template-areas: "names pd address measurements popts";
+  justify-content: center;
+  justify-items: center;
+  gap: 50px;
+  }
+
+#names {grid-area: names}
+#personalDetails {grid-area: pd}
+#address {grid-area: address}
+#measurements {grid-area: measurements}
+#POPT {grid-area: popt}
+
+#tel {width: 117px;}
