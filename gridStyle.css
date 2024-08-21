@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 190px 150px 200px repeat(2, 150px);
   grid-template-rows: 100px 100px;
-  grid-template-areas: "names pd address measurements popts";
+  grid-template-areas: "names pd address dates measurements";
   justify-content: center;
   justify-items: center;
   gap: 50px;
