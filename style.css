@@ -1,37 +1,3 @@
-.formContainer {
-    width: 90%;
-    margin: 0 auto;
-}
-
-.frontSheetInfo, .underForm, .propertyMeasures, #measureAdd, #extensionAdd {
-    display: flex;
-    gap: 25px;
-    justify-content: center;
-    padding-top: 30px;
-}
-
-.measuresCont {
-    display: flex;
-    flex-direction: row;
-    gap: 92px;
-    padding-top: 30px;
-    justify-content: center;
-}
-
-.column, #names, #personalDetails, #address, #dates, #measurements, #measuresCont {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#names {width: 150px}
-#telNo {width: 128px}
-#measurements {width: 50px}
-#POPT {width: 40px;}
-
-input { height: 12px; }
-select { height: 21px; }
-
 #landlordDiv, #URNdisplay {
     display: none;
 }

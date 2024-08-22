@@ -1,29 +1,16 @@
-.frontSheetContainer, #PASrow, .variousDetails, #propertyMeasures {
+.formContainer {
   display: grid;
   grid-template-columns: 98px 150px 133px 150px 125px 91px 98px;
+  grid-template-rows: 170px 50px 20px 90px 60px 20px;
+  grid-template-areas: ". names pd address dates measurements ."
+                       ". measureList nameList installComp pasCert popt ."
+                       ". . . measureAdd . . ."
+                       "URN scheme evidence rdsap yearOf propType ."
+                       "mainProp wallType roomHeight wallPerim roofTypes roofAreas ." 
+                       ". . . exAdd . . ." ;
   justify-content: center;
   gap: 30px;
   }
-
-.frontSheetContainer {
-  grid-template-rows: 190px;
-  grid-template-areas: ". names pd address dates measurements .";
-  }
-
-#PASrow {
-  grid-template-rows: 100px;
-  grid-template-areas: ". measureList installComp nameList pasCert popt .";
-  }
-
-.variousDetails {
-  grid-template-rows: 150px;
-  grid-template-areas: "URN scheme evidence rdsap yearOf propType .";
-}
-
-#propertyMeasures {
-  grid-template-rows: 150px;
-  grid-template-areas: "mainProp wallType roomHeight wallPerim roofTypes roofAreas .";
-}
 
 #names {grid-area: names}
 #personalDetails {grid-area: pd}
@@ -36,6 +23,8 @@
 #installerNameList {grid-area: nameList}
 #PAScert {grid-area: pasCert}
 #POPTs {grid-area: popt}
+
+#measureAdd{grid-area: measureAdd}
 
 #URNdisplay {grid-area: URN}
 #govScheme {grid-area: scheme}
@@ -51,6 +40,8 @@
 #roofTypes {grid-area: roofTypes}
 #roofAreas {grid-area: roofAreas}
 
+#extensionAdd {grid-area: exAdd}
+
 input {
 width: 100%;
 box-sizing: border-box;
@@ -64,7 +55,6 @@ select {margin: 10px 0px;}
 #measureAdd, #extensionAdd {
   display: flex;
   justify-content: center;
-  padding-bottom: 20px;
 }
 
 .inline {display: flex;
