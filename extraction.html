@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Text Extractor</title>
+    <!-- Load PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body>
+    <h1>PDF Text Extractor</h1>
+    <input type="file" id="uploadPdf" accept="application/pdf">
+    <h3>Extracted Text:</h3>
+    <div id="extractedText" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; width: 80%; height: 300px; overflow-y: scroll;"></div>
+
+    <script>
+        document.getElementById('uploadPdf').addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            var fileReader = new FileReader();
+
+            fileReader.onload = function() {
+                var typedarray = new Uint8Array(this.result);
+
+                pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
+                    console.log("PDF loaded");  // Debugging line
+
+                    pdf.getPage(1).then(function(page) {
+                        console.log("Page loaded");  // Debugging line
+
+                        page.getTextContent().then(function(textContent) {
+                            console.log("Text content obtained");  // Debugging line
+
+                            var text = textContent.items.map(function(item) {
+                                return item.str;
+                            }).join(' ');
+
+                            // Display the extracted text in the HTML element
+                            document.getElementById('extractedText').textContent = text;
+
+                            // Log the extracted text for debugging
+                            console.log(text);
+                        }).catch(function(error) {
+                            console.error("Error getting text content: ", error);  // Debugging line
+                        });
+                    }).catch(function(error) {
+                        console.error("Error loading page: ", error);  // Debugging line
+                    });
+                }).catch(function(error) {
+                    console.error("Error loading PDF: ", error);  // Debugging line
+                });
+            };
+
+            fileReader.readAsArrayBuffer(file);
+        });
+    </script>
+</body>
+</html>
