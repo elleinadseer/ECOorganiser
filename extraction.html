@@ -24,27 +24,37 @@
                 pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
                     console.log("PDF loaded");  // Debugging line
 
-                    pdf.getPage(1).then(function(page) {
-                        console.log("Page loaded");  // Debugging line
+                    var totalPages = pdf.numPages;
+                    var extractedText = [];
 
-                        page.getTextContent().then(function(textContent) {
-                            console.log("Text content obtained");  // Debugging line
+                    function extractPageText(pageNumber) {
+                        return pdf.getPage(pageNumber).then(function(page) {
+                            return page.getTextContent().then(function(textContent) {
+                                var pageText = textContent.items.map(function(item) {
+                                    return item.str;
+                                }).join(' ');
 
-                            var text = textContent.items.map(function(item) {
-                                return item.str;
-                            }).join(' ');
+                                extractedText.push(pageText);
 
-                            // Display the extracted text in the HTML element
-                            document.getElementById('extractedText').textContent = text;
-
-                            // Log the extracted text for debugging
-                            console.log(text);
-                        }).catch(function(error) {
-                            console.error("Error getting text content: ", error);  // Debugging line
+                                // If there are more pages, extract the next one
+                                if (pageNumber < totalPages) {
+                                    return extractPageText(pageNumber + 1);
+                                } else {
+                                    return extractedText.join('\n\n'); // Combine all pages' text
+                                }
+                            });
                         });
+                    }
+
+                    extractPageText(1).then(function(fullText) {
+                        document.getElementById('extractedText').textContent = fullText;
+
+                        // Log the extracted text for debugging
+                        console.log(fullText);
                     }).catch(function(error) {
-                        console.error("Error loading page: ", error);  // Debugging line
+                        console.error("Error extracting text: ", error);
                     });
+
                 }).catch(function(error) {
                     console.error("Error loading PDF: ", error);  // Debugging line
                 });
