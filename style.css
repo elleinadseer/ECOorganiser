@@ -1,3 +1,7 @@
 #landlordDiv {
     display: none;
 }
+
+[id^="EX-"] {
+    display: none;
+}

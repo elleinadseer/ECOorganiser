@@ -1,4 +1,9 @@
-// Google Sheets API initialization
+// Helper function to capitalize the first letter of a string
+function capitaliseFirstLetter(str) {
+    return str.toLowerCase().replace(/^\w/, c => c.toUpperCase());
+}
+
+// Initialize the Google Sheets API client
 function initClient() {
     gapi.client.init({
         'apiKey': 'AIzaSyA7Vr3TWalHb1wZgam4CEgjC_E1qzPtGWQ',
@@ -10,13 +15,13 @@ function initClient() {
     });
 }
 
-// Helper function to capitalize the first letter of a string
-function capitaliseFirstLetter(str) {
-    return str.toLowerCase().replace(/^\w/, c => c.toUpperCase());
-}
-
-// Function to load sheet data and search for a postcode
-function searchPostcode(postcode) {
+// Function to load sheet data and search for a postcode and address number
+function searchPostcode(postcode, addressNumber) {
+    if (!gapi.client || !gapi.client.sheets) {
+        console.error('Google Sheets API client is not initialized.');
+        return Promise.reject('Google Sheets API client is not initialized.');
+    }
+    
     return gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1b9Vrvtd4Hbg4R9DPg1UrH5cdTkYtLp90uOb5ChztPKo',
         range: 'DWP+OFGEM!A1:K', // Adjusted range
@@ -25,7 +30,7 @@ function searchPostcode(postcode) {
         if (rows.length > 0) {
             for (var i = 0; i < rows.length; i++) {
                 var row = rows[i];
-                if (row[9] === postcode) { // Column J (index 9)
+                if (row[9] === postcode && row[3] === addressNumber) { // Column J (index 9) for postcode and Column D (index 3) for address number
                     // Extract and capitalize first letters of surname and forename
                     var surname = capitaliseFirstLetter(row[0]);
                     var forename = capitaliseFirstLetter(row[1]);
@@ -38,7 +43,7 @@ function searchPostcode(postcode) {
                     };
                 }
             }
-            throw new Error('Postcode not found.');
+            throw new Error('Postcode and address number combination not found.');
         } else {
             throw new Error('No data found.');
         }
@@ -123,6 +128,7 @@ function handlePdfExtraction() {
                         var street = `${addressMatch[1]} ${addressMatch[2].trim()}`;
                         var town = capitaliseFirstLetter(addressMatch[3].trim());
                         var postcode = addressMatch[4].trim();
+                        var addressNumber = addressMatch[1].trim();
 
                         // Fill in the address fields
                         document.getElementById('postcode').value = postcode;
@@ -133,42 +139,42 @@ function handlePdfExtraction() {
                             postcode: document.getElementById('postcode').value,
                             street: document.getElementById('street').value,
                             town: document.getElementById('town').value
-                        });                   
-
-                        // Search for postcode and fill form
-                    searchPostcode(postcode).then(function(record) {
-                        // Log the data retrieved from the searchPostcode function
-                        console.log('Data retrieved from searchPostcode:', record);
-
-                        document.getElementById('sName').value = record.surname || "";
-                        document.getElementById('fName').value = record.forename || "";
-                        document.getElementById('URN').value = record.urn || "";
-                    }).catch(function(error) {
-                        console.error('Error retrieving data from Google Sheets:', error);
-                    });
-
-                    // Additional data extraction
-                    var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
-                    if (match) {
-                        var roofArea = match[1];
-                        var roomHeight = match[2];
-                        var wallPerimeter = match[3];
-
-                        // Log the extracted values
-                        console.log('Extracted values:', {
-                            roofArea: roofArea,
-                            roomHeight: roomHeight,
-                            wallPerimeter: wallPerimeter
                         });
 
-                        // Fill the form fields with the extracted values
-                        document.getElementById('roofArea').value = roofArea || "";
-                        document.getElementById('roomHeight').value = roomHeight || "";
-                        document.getElementById('wallPerimeter').value = wallPerimeter || "";
-                    } else {
-                        console.log('No match found in the text.');
-                    }}
+                        // Search for postcode and address number, then fill form
+                        searchPostcode(postcode, addressNumber).then(function(record) {
+                            // Log the data retrieved from the searchPostcode function
+                            console.log('Data retrieved from searchPostcode:', record);
 
+                            document.getElementById('sName').value = record.surname || "";
+                            document.getElementById('fName').value = record.forename || "";
+                            document.getElementById('URN').value = record.urn || "";
+                        }).catch(function(error) {
+                            console.error('Error retrieving data from Google Sheets:', error);
+                        });
+
+                        // Additional data extraction
+                        var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+                        if (match) {
+                            var floorArea = match[1];
+                            var roomHeight = match[2];
+                            var wallPerimeter = match[3];
+
+                            // Log the extracted values
+                            console.log('Extracted values:', {
+                                floorArea: floorArea,
+                                roomHeight: roomHeight,
+                                wallPerimeter: wallPerimeter
+                            });
+
+                            // Fill the form fields with the extracted values
+                            document.getElementById('floorArea').value = floorArea || "";
+                            document.getElementById('roomHeight').value = roomHeight || "";
+                            document.getElementById('wallPerimeter').value = wallPerimeter || "";
+                        } else {
+                            console.log('No match found in the text.');
+                        }
+                    }
 
                     // Fill the form fields with the extracted data
                     document.getElementById('surveyDate').value = convertDateFormat(extractedData.assessment_date) || "";
