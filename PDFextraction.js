@@ -6,6 +6,10 @@ function convertDateFormat(dateStr) {
     return `${parts[2]}-${parts[1]}-${parts[0]}`;
 }
 
+function capitalizeFirstLetter(str) {
+    return str.toLowerCase().replace(/^\w/, c => c.toUpperCase());
+}
+
 document.getElementById('uploadPdf').addEventListener('change', function(e) {
     var file = e.target.files[0];
     var fileReader = new FileReader();
@@ -35,8 +39,6 @@ document.getElementById('uploadPdf').addEventListener('change', function(e) {
 
                 // Extract the data using regex
                 var extractedData = {
-                    dwelling_address: extractData(/Dwelling Address\s+(.+?),\s+(.+?),\s+(.+?)\s+Reference/, text),
-
                     assessment_date: extractData(/Assessment Date\s+(\d{2}\/\d{2}\/\d{4})/, text),
                     submission_date: extractData(/Submission Date\s+(\d{2}\/\d{2}\/\d{4})/, text),
 
@@ -45,7 +47,7 @@ document.getElementById('uploadPdf').addEventListener('change', function(e) {
 
                     reference_number: extractData(/Reference\s+(\d+)/, text),
 
-                    construction_year: extractData(/Construction details:.*?- built in\s+(C \d{4}-\d{4})/, text),
+                    construction_year: extractData(/built in\s+[A-Z]\s+(\d{4}-\d{4})/, text),
                     property_type: extractData(/Property Type\s+(.+?)\s+Total Floor Area/, text),
 
                     wall_type: extractData(/Wall Type:\s+(.+?)\s+Wall Insulation/, text),
@@ -54,8 +56,20 @@ document.getElementById('uploadPdf').addEventListener('change', function(e) {
 
                 console.log("Extracted Data:", extractedData);
 
-                var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+                // Extract the address using regex
+                var addressMatch = text.match(/Dwelling Address\s+(\d+),\s+([\w\s]+),\s+([A-Z]+),\s+([A-Z\d]{2,4}\s\d[A-Z]{2})/);
+                if (addressMatch) {
+                    var street = `${addressMatch[1]} ${addressMatch[2].trim()}`;
+                    var town = capitalizeFirstLetter(addressMatch[3].trim());
+                    var postcode = addressMatch[4].trim();
 
+                    // Fill in the address fields
+                    document.getElementById('postcode').value = postcode;
+                    document.getElementById('street').value = street;
+                    document.getElementById('town').value = town;
+                }
+
+                var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
                 if (match) {
                     var roofArea = match[1];
                     var roomHeight = match[2];
@@ -79,12 +93,17 @@ document.getElementById('uploadPdf').addEventListener('change', function(e) {
                 document.getElementById('rdsapNum').value = extractedData.reference_number || "";
 
                 document.getElementById('propType').value = extractedData.property_type || "";
-                document.getElementById('yearOfProperty').value = extractedData.construction_year || "";
 
                 document.getElementById('wallConstruct').value = extractedData.wall_type || "";
                 document.getElementById('roofTypes').value = extractedData.roof_type || "";
 
-                // Optionally, submit the form automatically
+                // Select the appropriate option in the "Year of Property" dropdown
+                selectDropdownOption('#YOpropSelect', extractedData.construction_year);
+
+                // Select the appropriate option in the "Wall Construction" dropdown
+                selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
+
+                // Submit the form automatically
                 // document.getElementById('myForm').submit();
             });
 
@@ -98,6 +117,20 @@ document.getElementById('uploadPdf').addEventListener('change', function(e) {
 function extractData(pattern, text) {
     var match = text.match(pattern);
     return match ? match[1].trim() : null;
+}
+
+// Helper function to select a dropdown option based on extracted text
+function selectDropdownOption(dropdownSelector, extractedValue) {
+    var selectElement = document.querySelector(dropdownSelector);
+    var options = selectElement.options;
+
+    for (var i = 0; i < options.length; i++) {
+        // Check if the option text matches the extracted value
+        if (options[i].text === extractedValue) {
+            options[i].selected = true;
+            break;
+        }
+    }
 }
 
 
