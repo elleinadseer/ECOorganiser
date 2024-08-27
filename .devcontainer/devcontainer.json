@@ -1,0 +1,13 @@
+{
+    "name": "Node.js Codespace",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:14",
+    "postCreateCommand": "npm install",
+    "features": {
+      "node": "16"
+    },
+    "forwardPorts": [3000],
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    }
+  }
+  
