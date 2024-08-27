@@ -1,3 +1,11 @@
+// Add this helper function to convert date format
+function convertDateFormat(dateStr) {
+    // Split the date string into components
+    var parts = dateStr.split('/');
+    // Rearrange and return the date in yyyy-MM-dd format
+    return `${parts[2]}-${parts[1]}-${parts[0]}`;
+}
+
 document.getElementById('uploadPdf').addEventListener('change', function(e) {
     var file = e.target.files[0];
     var fileReader = new FileReader();
@@ -32,7 +40,7 @@ document.getElementById('uploadPdf').addEventListener('change', function(e) {
                     assessment_date: extractData(/Assessment Date\s+(\d{2}\/\d{2}\/\d{4})/, text),
                     submission_date: extractData(/Submission Date\s+(\d{2}\/\d{2}\/\d{4})/, text),
 
-                    total_floor_area: extractData(/Total Floor Area\s+(\d+\s*m²)/, text),
+                    total_floor_area: extractData(/Total Floor Area\s+(\d+)/, text),
                     current_efficiency_rating: extractData(/G G\s*\(1-20\)\s+(\d+)/, text),
 
                     reference_number: extractData(/Reference\s+(\d+)/, text),
@@ -49,12 +57,12 @@ document.getElementById('uploadPdf').addEventListener('change', function(e) {
                 var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
 
                 if (match) {
-                    var floorArea = match[1];
+                    var roofArea = match[1];
                     var roomHeight = match[2];
                     var wallPerimeter = match[3];
 
                     // Fill the form fields with the extracted values
-                    document.getElementById('floorArea').value = floorArea || "";
+                    document.getElementById('roofArea').value = roofArea || "";
                     document.getElementById('roomHeight').value = roomHeight || "";
                     document.getElementById('wallPerimeter').value = wallPerimeter || "";
                 }
@@ -62,21 +70,22 @@ document.getElementById('uploadPdf').addEventListener('change', function(e) {
                 // Fill the form fields with the extracted data
                 /* document.getElementById('address').value = extractedData.dwelling_address || ""; */
 
-                document.getElementById('surveyDate').value = extractedData.assessment_date || "";
-                document.getElementById('submissionDate').value = extractedData.submission_date || "";
+                document.getElementById('surveyDate').value = convertDateFormat(extractedData.assessment_date) || "";
+                document.getElementById('submissionDate').value = convertDateFormat(extractedData.submission_date) || "";
 
+                document.getElementById('totalFloorArea').value = extractedData.total_floor_area || "";
                 document.getElementById('SAPrating').value = extractedData.current_efficiency_rating || "";
 
                 document.getElementById('rdsapNum').value = extractedData.reference_number || "";
 
                 document.getElementById('propType').value = extractedData.property_type || "";
-                document.getElementById('YOprop').value = extractedData.construction_year || "";
+                document.getElementById('yearOfProperty').value = extractedData.construction_year || "";
 
                 document.getElementById('wallConstruct').value = extractedData.wall_type || "";
                 document.getElementById('roofTypes').value = extractedData.roof_type || "";
 
                 // Optionally, submit the form automatically
-                document.getElementById('myForm').submit();
+                // document.getElementById('myForm').submit();
             });
 
         });
