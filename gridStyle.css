@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 98px 150px 133px 150px 125px 91px 98px;
   grid-template-rows: 170px 50px 20px 90px 60px repeat(2, 20px);
-  grid-template-areas: ". names pd address dates measurements fsReq"
+  grid-template-areas: ". names pd address dates measurements FSreq"
                        ". measureList nameList installComp pasCert popt ."
                        ". . . measureAdd . . ."
                        "URN scheme evidence rdsap yearOf propType ."
