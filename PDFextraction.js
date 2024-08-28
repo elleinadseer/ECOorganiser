@@ -1,82 +1,5 @@
-// Helper function to capitalize the first letter of a string
-function capitaliseFirstLetter(str) {
-    return str.toLowerCase().replace(/^\w/, c => c.toUpperCase());
-}
-
-// Initialize the Google Sheets API client
-function initClient() {
-    gapi.client.init({
-        'apiKey': 'AIzaSyA7Vr3TWalHb1wZgam4CEgjC_E1qzPtGWQ',
-        'discoveryDocs': ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
-    }).then(function() {
-        console.log('Google Sheets API initialized.');
-    }, function(error) {
-        console.error('Error initializing Google Sheets API:', error);
-    });
-}
-
-// Function to load sheet data and search for a postcode and address number
-function searchPostcode(postcode, addressNumber) {
-    if (!gapi.client || !gapi.client.sheets) {
-        console.error('Google Sheets API client is not initialized.');
-        return Promise.reject('Google Sheets API client is not initialized.');
-    }
-    
-    return gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: '1b9Vrvtd4Hbg4R9DPg1UrH5cdTkYtLp90uOb5ChztPKo',
-        range: 'DWP+OFGEM!A1:K', // Adjusted range
-    }).then(function(response) {
-        var rows = response.result.values;
-        if (rows.length > 0) {
-            for (var i = 0; i < rows.length; i++) {
-                var row = rows[i];
-                if (row[9] === postcode && row[3] === addressNumber) { // Column J (index 9) for postcode and Column D (index 3) for address number
-                    // Extract and capitalize first letters of surname and forename
-                    var surname = capitaliseFirstLetter(row[0]);
-                    var forename = capitaliseFirstLetter(row[1]);
-                    var urn = row[10]; // Column K
-
-                    return {
-                        surname: surname,
-                        forename: forename,
-                        urn: urn
-                    };
-                }
-            }
-            throw new Error('Postcode and address number combination not found.');
-        } else {
-            throw new Error('No data found.');
-        }
-    }).catch(function(error) {
-        console.error('Error searching postcode:', error);
-        throw error;
-    });
-}
-
-// Helper function to extract data using regex
-function extractData(pattern, text) {
-    var match = text.match(pattern);
-    return match ? match[1].trim() : null;
-}
-
-// Helper function to convert date format from dd/mm/yyyy to yyyy-mm-dd
-function convertDateFormat(dateStr) {
-    var parts = dateStr.split('/');
-    return `${parts[2]}-${parts[1]}-${parts[0]}`;
-}
-
-// Helper function to select a dropdown option based on extracted text
-function selectDropdownOption(dropdownSelector, extractedValue) {
-    var selectElement = document.querySelector(dropdownSelector);
-    var options = selectElement.options;
-
-    for (var i = 0; i < options.length; i++) {
-        if (options[i].text === extractedValue) {
-            options[i].selected = true;
-            break;
-        }
-    }
-}
+import { initClient, searchPostcode } from './googleSheets.js';
+import { capitaliseFirstLetter, extractData, convertDateFormat, selectDropdownOption } from './helpers.js';
 
 // Function to handle PDF extraction and form filling
 function handlePdfExtraction() {
@@ -123,7 +46,7 @@ function handlePdfExtraction() {
                     console.log("Extracted Data:", extractedData);
 
                     // Extract the address using regex
-                    var addressMatch = text.match(/Dwelling Address\s+(\d+),\s+([\w\s]+),\s+([A-Z]+),\s+([A-Z\d]{2,4}\s\d[A-Z]{2})/);
+                    var addressMatch = text.match(/Dwelling Address\s*(\d+),\s*([\w\s]+?),\s*([A-Z\s]+?),\s*([A-Z\d]{2,4}\s\d[A-Z]{2})/);
                     if (addressMatch) {
                         var street = `${addressMatch[1]} ${addressMatch[2].trim()}`;
                         var town = capitaliseFirstLetter(addressMatch[3].trim());
@@ -204,6 +127,7 @@ function handlePdfExtraction() {
 // Load Google API client and initialize PDF extraction
 gapi.load('client', initClient);
 handlePdfExtraction();
+
 
 
 
