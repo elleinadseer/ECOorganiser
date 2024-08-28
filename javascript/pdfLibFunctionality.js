@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const in1 = form.getTextField('INSTALLER'); const in2 = form.getTextField('INSTALLER_2'); const in3 = form.getTextField('INSTALLER_3'); const in4 = form.getTextField('INSTALLER_4'); const in5 = form.getTextField('INSTALLER_5');
         const inda1 = form.getTextField('INSTALL DATE'); const inda2 = form.getTextField('INSTALL DATE_2'); const inda3 = form.getTextField('INSTALL DATE_3'); const inda4 = form.getTextField('INSTALL DATE_4'); const inda5 = form.getTextField('INSTALL DATE_5');
 
-        const installDate = form.getTextField('VENTILATION DATE');
+       // const installDate = form.getTextField('VENTILATION DATE');
         const handoverDate = form.getTextField('HANDOVER DATE');
         const TFL = form.getTextField('TOTAL FLOOR AREA');
         const SAPrating = form.getTextField('SAP RATING');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         m1.setText('TTZC');
         in1.setText('Jatinder Malhi');
         inda1.setText('19/08/2024');
-        installDate.setText('21/08/2024');
+       // installDate.setText('21/08/2024');
         handoverDate.setText('23/08/2024');
         TFL.setText('54');
         SAPrating.setText('E34');

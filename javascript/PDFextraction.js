@@ -1,4 +1,4 @@
-import { initClient, searchPostcode } from './googleSheets.js';
+import { initClient, searchPostcode, searchSubmission } from './googleSheets.js';
 import { capitaliseFirstLetter, extractData, convertDateFormat, selectDropdownOption } from './helpers.js';
 
 // Function to handle PDF extraction and form filling
@@ -76,6 +76,22 @@ function handlePdfExtraction() {
                             console.error('Error retrieving data from Google Sheets:', error);
                         });
 
+                        searchSubmission(postcode).then(function(record) {
+                            // Log the data retrieved from searchSubmission function
+                            console.log('Data retrieved from searchSubmission:', record);
+                        
+                            // Assuming you have form fields with these IDs and you want to fill them
+                            selectDropdownOption('#schemeSelect', record.scheme);
+                            document.getElementById('installDateInput').value = record.installDate || "";
+                            document.getElementById('measures').value = record.measures.join(', ') || "";
+                            document.getElementById('eligibility').value = record.eligibility || "";
+
+                            console.log('Record Install Date:', record.installDate); // Log to verify the date value
+
+                        }).catch(function(error) {
+                            console.error('Error retrieving data from Google Sheets:', error);
+                        });
+
                         // Additional data extraction
                         var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
                         if (match) {
@@ -111,6 +127,7 @@ function handlePdfExtraction() {
 
                     // Select the appropriate option in the dropdowns
                     selectDropdownOption('#YOpropSelect', extractedData.construction_year);
+                    selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
                     selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
 
                     // Optionally submit the form

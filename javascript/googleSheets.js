@@ -49,3 +49,54 @@ export function searchPostcode(postcode, addressNumber) {
         throw error;
     });
 }
+
+// Function to search SUBMISSION sheet based on postcode and a list of terms
+export function searchSubmission(postcode) {
+    if (!gapi.client || !gapi.client.sheets) {
+        console.error('Google Sheets API client is not initialized.');
+        return Promise.reject('Google Sheets API client is not initialized.');
+    }
+
+    return gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1b9Vrvtd4Hbg4R9DPg1UrH5cdTkYtLp90uOb5ChztPKo',
+        range: 'SUBMISSION!B1:G',
+    }).then(function(response) {
+        var rows = response.result.values;
+        if (rows.length > 0) {
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                
+                // Check if the postcode in the current row matches
+                if (row[2] === postcode) { // Column D (index 2) for postcode
+                    var measureScheme = row[0]; // Column B (index 0)
+
+                // Extract the first scheme (text inside brackets)
+                var schemeMatch = measureScheme.match(/\(([^)]+)\)/);
+                var scheme = schemeMatch ? schemeMatch[1] : ""; // Extract the first match or set to empty string if none
+
+                    var measures = measureScheme
+                        .replace(/\([^)]*\)/g, '') // Remove text within brackets
+                        .replace(/[\+\-/]/g, '') // Remove special characters
+                        .split(/\s+/) // Split by whitespace
+                        .filter(word => /^[a-zA-Z]+$/.test(word)); // Keep only text
+                    
+                    var installDate = row[5]; // Column G (index 5)
+                    var eligibility = row[4]; // Column F (index 4)
+
+                    return {
+                        scheme: scheme,
+                        measures: measures,
+                        installDate: installDate,
+                        eligibility: eligibility
+                    };
+                }
+            }
+            throw new Error('Postcode found, but no matching terms in column B.');
+        } else {
+            throw new Error('No data found.');
+        }
+    }).catch(function(error) {
+        console.error('Error searching submission:', error);
+        throw error;
+    });
+}
