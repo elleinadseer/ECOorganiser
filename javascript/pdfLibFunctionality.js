@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const installDate = form.getTextField('VENTILATION DATE');
         const handoverDate = form.getTextField('HANDOVER DATE');
-        const EPRnums = form.getTextField('EPR JUMPS');
+        const TFL = form.getTextField('TOTAL FLOOR AREA');
+        const SAPrating = form.getTextField('SAP RATING');
 
         // Fill the form fields with data
         propAddress.setText('134 Bleak Road');
@@ -44,7 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
         inda1.setText('19/08/2024');
         installDate.setText('21/08/2024');
         handoverDate.setText('23/08/2024');
-        EPRnums.setText('54 E35');
+        TFL.setText('54');
+        SAPrating.setText('E34');
 
         // Serialize the PDF to bytes (Uint8Array)
         const pdfBytes = await pdfDoc.save();

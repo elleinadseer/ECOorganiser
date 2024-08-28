@@ -1,5 +1,7 @@
 export function capitaliseFirstLetter(str) {
-    return str.toLowerCase().replace(/^\w/, c => c.toUpperCase());
+    return str
+        .toLowerCase()                   // Convert the whole string to lowercase
+        .replace(/\b\w/g, c => c.toUpperCase()); // Capitalize the first letter of each word
 }
 
 export function extractData(pattern, text) {
