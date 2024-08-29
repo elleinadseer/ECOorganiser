@@ -1,9 +1,13 @@
 .formContainer {
   display: grid;
   grid-template-columns: 98px 150px 133px 150px 125px 106px 98px;
-  grid-template-rows: 170px 50px 20px 90px 60px repeat(2, 20px);
+  grid-template-rows: 170px repeat(5, 50px) 20px 90px 60px repeat(2, 20px);
   grid-template-areas: ". names pd address dates measurements FSreq"
-                       ". measureList nameList installComp pasCert popt ."
+                       ". m1List nameList installComp pasCert popt ."
+                       ". m2List m2nameList m2installComp m2pasCert m2popt ."
+                       ". m3List m3nameList m3installComp m3pasCert m3popt ."
+                       ". m4List m4nameList m4installComp m4pasCert m4popt ."
+                       ". m5List m5nameList m5installComp m5pasCert m5popt ."
                        ". . . measureAdd . . ."
                        "URN scheme evidence rdsap yearOf propType ."
                        "mainProp wallType roomHeight wallPerim roofTypes floorArea ." 
@@ -20,11 +24,12 @@
 #dates {grid-area: dates}
 #measurements {grid-area: measurements}
 
-#measureList {grid-area: measureList}
+#measureListDiv {grid-area: m1List}
 #installerComps {grid-area: installComp}
 #installerNameList {grid-area: nameList}
 #PAScert {grid-area: pasCert}
 #POPTs {grid-area: popt}
+/* Extra measures at the bottom of file */
 
 #measureAdd{grid-area: measureAdd}
 
@@ -77,3 +82,31 @@ select {margin: 10px 0px;}
 /* div {    background-color: #e5ffe5;
     border: 10px #e5ffe5 solid;
     border-radius: 10px; } */
+
+/* Measure 2 */
+#m2measureListDiv {grid-area: m2List;}
+#m2installerComps {grid-area: m2installComp;}
+#m2installerNameList {grid-area: m2nameList;}
+#m2PAScert {grid-area: m2pasCert;}
+#m2POPTs {grid-area: m2popt;}
+
+/* Measure 3 */
+#m3measureListDiv {grid-area: m3List;}
+#m3installerComps {grid-area: m3installComp;}
+#m3installerNameList {grid-area: m3nameList;}
+#m3PAScert {grid-area: m3pasCert;}
+#m3POPTs {grid-area: m3popt;}
+
+/* Measure 4 */
+#m4measureListDiv {grid-area: m4List;}
+#m4installerComps {grid-area: m4installComp;}
+#m4installerNameList {grid-area: m4nameList;}
+#m4PAScert {grid-area: m4pasCert;}
+#m4POPTs {grid-area: m4popt;}
+
+/* Measure 5 */
+#m5measureListDiv {grid-area: m5List;}
+#m5installerComps {grid-area: m5installComp;}
+#m5installerNameList {grid-area: m5nameList;}
+#m5PAScert {grid-area: m5pasCert;}
+#m5POPTs {grid-area: m5popt;}

@@ -83,11 +83,18 @@ function handlePdfExtraction() {
                             // Assuming you have form fields with these IDs and you want to fill them
                             selectDropdownOption('#schemeSelect', record.scheme);
                             document.getElementById('installDateInput').value = record.installDate || "";
-                            document.getElementById('measures').value = record.measures.join(', ') || "";
+                        
+                            // Iterate over the record.measures array and fill the corresponding dropdowns
+                            record.measures.forEach(function(measure, index) {
+                                // Assuming measureList divs are named sequentially as m1measureList, m2measureList, etc.
+                                var dropdownId = '#m' + (index + 1) + 'measureList';
+                                selectDropdownOption(dropdownId, measure);
+                            });
+
                             document.getElementById('eligibility').value = record.eligibility || "";
-
+                        
                             console.log('Record Install Date:', record.installDate); // Log to verify the date value
-
+                        
                         }).catch(function(error) {
                             console.error('Error retrieving data from Google Sheets:', error);
                         });
