@@ -2,6 +2,34 @@ import { populateInstallerInfo } from './measures.js';
 import { initClient, searchPostcode, searchSubmission } from './googleSheets.js';
 import { capitaliseFirstLetter, extractData, convertDateFormat, selectDropdownOption } from './helpers.js';
 
+function showMeasureRow(measureIndex) {
+    // Define the IDs of the elements to show
+    const measureListDiv = document.getElementById(`m${measureIndex}measureListDiv`);
+    const materialsDD = document.getElementById(`m${measureIndex}materialsDD`);
+    const installerComps = document.getElementById(`m${measureIndex}installerComps`);
+    const installerNameList = document.getElementById(`m${measureIndex}installerNameList`);
+    const PAScert = document.getElementById(`m${measureIndex}PAScert`);
+    const POPTs = document.getElementById(`m${measureIndex}POPTs`);
+
+    // Array of elements to show
+    const elementsToShow = [
+        measureListDiv,
+        materialsDD,
+        installerComps,
+        installerNameList,
+        PAScert,
+        POPTs
+    ];
+
+    // Iterate over each element and set its display property
+    elementsToShow.forEach(element => {
+        if (element) {
+            element.style.display = 'block'; // Show the element
+        }
+    });
+}
+
+
 // Function to handle PDF extraction and form filling
 export function handlePdfExtraction() {
     document.getElementById('uploadPdf').addEventListener('change', function(e) {
@@ -87,12 +115,18 @@ export function handlePdfExtraction() {
                         
                             // Iterate over the record.measures array and fill the corresponding dropdowns
                             record.measures.forEach(function(measure, index) {
+                                // Determine the measure row index (1-based)
+                                const measureIndex = index + 1;
+
+                                // Show the respective measure row
+                                showMeasureRow(measureIndex);
+
                                 // Assuming measureList divs are named sequentially as m1measureList, m2measureList, etc.
-                                var dropdownId = '#m' + (index + 1) + 'measureList';
+                                var dropdownId = '#m' + measureIndex + 'measureList';
                                 selectDropdownOption(dropdownId, measure);
 
                                 // Populate installer info for each measure
-                                populateInstallerInfo(measure, index + 1);
+                                populateInstallerInfo(measure, measureIndex);
                             });
 
                             document.getElementById('eligibility').value = record.eligibility || "";
