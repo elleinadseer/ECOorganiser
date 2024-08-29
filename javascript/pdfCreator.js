@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
         TFL.setText('54');
         SAPrating.setText('E34');
 
+
+
+        
+        form.flatten();
+
         // Serialize the PDF to bytes (Uint8Array)
         const pdfBytes = await pdfDoc.save();
 
