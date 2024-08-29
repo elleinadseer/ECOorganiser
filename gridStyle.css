@@ -1,13 +1,14 @@
 .formContainer {
   display: grid;
   grid-template-columns: 98px 150px 133px 150px 125px 106px 98px;
-  grid-template-rows: 170px repeat(5, 50px) 20px 90px 60px repeat(2, 20px);
+  grid-template-rows: repeat(11, auto);
+  /*   grid-template-rows: 170px repeat(5, auto) 20px 90px 60px repeat(2, 20px); */
   grid-template-areas: ". names pd address dates measurements FSreq"
-                       ". m1List nameList installComp pasCert popt ."
-                       ". m2List m2nameList m2installComp m2pasCert m2popt ."
-                       ". m3List m3nameList m3installComp m3pasCert m3popt ."
-                       ". m4List m4nameList m4installComp m4pasCert m4popt ."
-                       ". m5List m5nameList m5installComp m5pasCert m5popt ."
+                       "m1List material nameList installComp pasCert popt ."
+                       "m2List m2material m2nameList m2installComp m2pasCert m2popt ."
+                       "m3List m3material m3nameList m3installComp m3pasCert m3popt ."
+                       "m4List m4material m4nameList m4installComp m4pasCert m4popt ."
+                       "m5List m5material m5nameList m5installComp m5pasCert m5popt ."
                        ". . . measureAdd . . ."
                        "URN scheme evidence rdsap yearOf propType ."
                        "mainProp wallType roomHeight wallPerim roofTypes floorArea ." 
@@ -15,7 +16,7 @@
                        "EX-mainProp EX-wallType EX-roomHeight EX-wallPerim EX-roofTypes EX-floorArea .";
 
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   }
 
 #names {grid-area: names}
@@ -25,6 +26,7 @@
 #measurements {grid-area: measurements}
 
 #measureListDiv {grid-area: m1List}
+#materialsDD {grid-area: material}
 #installerComps {grid-area: installComp}
 #installerNameList {grid-area: nameList}
 #PAScert {grid-area: pasCert}
@@ -85,6 +87,7 @@ select {margin: 10px 0px;}
 
 /* Measure 2 */
 #m2measureListDiv {grid-area: m2List;}
+#m2materialsDD {grid-area: m2material}
 #m2installerComps {grid-area: m2installComp;}
 #m2installerNameList {grid-area: m2nameList;}
 #m2PAScert {grid-area: m2pasCert;}
@@ -92,6 +95,7 @@ select {margin: 10px 0px;}
 
 /* Measure 3 */
 #m3measureListDiv {grid-area: m3List;}
+#m3materialsDD {grid-area: m3material}
 #m3installerComps {grid-area: m3installComp;}
 #m3installerNameList {grid-area: m3nameList;}
 #m3PAScert {grid-area: m3pasCert;}
@@ -99,6 +103,7 @@ select {margin: 10px 0px;}
 
 /* Measure 4 */
 #m4measureListDiv {grid-area: m4List;}
+#m4materialsDD {grid-area: m4material}
 #m4installerComps {grid-area: m4installComp;}
 #m4installerNameList {grid-area: m4nameList;}
 #m4PAScert {grid-area: m4pasCert;}
@@ -106,6 +111,7 @@ select {margin: 10px 0px;}
 
 /* Measure 5 */
 #m5measureListDiv {grid-area: m5List;}
+#m5materialsDD {grid-area: m5material}
 #m5installerComps {grid-area: m5installComp;}
 #m5installerNameList {grid-area: m5nameList;}
 #m5PAScert {grid-area: m5pasCert;}

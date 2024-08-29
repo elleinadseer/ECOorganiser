@@ -1,8 +1,9 @@
+import { populateInstallerInfo } from './measures.js';
 import { initClient, searchPostcode, searchSubmission } from './googleSheets.js';
 import { capitaliseFirstLetter, extractData, convertDateFormat, selectDropdownOption } from './helpers.js';
 
 // Function to handle PDF extraction and form filling
-function handlePdfExtraction() {
+export function handlePdfExtraction() {
     document.getElementById('uploadPdf').addEventListener('change', function(e) {
         var file = e.target.files[0];
         var fileReader = new FileReader();
@@ -89,6 +90,9 @@ function handlePdfExtraction() {
                                 // Assuming measureList divs are named sequentially as m1measureList, m2measureList, etc.
                                 var dropdownId = '#m' + (index + 1) + 'measureList';
                                 selectDropdownOption(dropdownId, measure);
+
+                                // Populate installer info for each measure
+                                populateInstallerInfo(measure, index + 1);
                             });
 
                             document.getElementById('eligibility').value = record.eligibility || "";
@@ -151,6 +155,7 @@ function handlePdfExtraction() {
 // Load Google API client and initialize PDF extraction
 gapi.load('client', initClient);
 handlePdfExtraction();
+
 
 
 

@@ -72,7 +72,7 @@
 
         <div id="measureListDiv">
         <label>PAS Measure:</label><br>
-        <select id="m1measureList">
+          <select id="m1measureList">
             <option id="CWI">CWI</option>
             <option id="ESH">ESH</option>
             <option id="EWI">EWI</option>
@@ -89,27 +89,32 @@
             <option id="ST">ST</option>
             <option id="TRV">TRV</option>
             <option id="TTZC">TTZC</option>
-        </select>
-     </div>
+          </select>
+        </div>
+
+        <div id="materialsDD">
+            <label>Material:</label><br>
+            <select id="m1material"></select>
+        </div>
 
         <div id="installerComps">
           <label>Installer Company:</label>
-            <input id="installerCompany"></input>
+            <input id="m1installerCompany"></input>
         </div>
         
         <div id="installerNameList">
         <label>Installer Name:</label>
-            <input id="installerName"></input>
+            <select id="m1installerName"></select>
         </div>
 
         <div id="PAScert">
             <label>PAS Certificate:</label>
-                <input id="PAScertNum"></input>
+                <input id="m1PAScertNum"></input>
         </div>
 
         <div id="POPTs">
              <label for="POPT">POPT:</label>
-            <input type="text" id="POPT">
+            <input type="text" id="m1POPT">
          </div>
 
     <div id="measureAdd"> Add another measure </div>
@@ -283,6 +288,11 @@
 <option id="m2CWI">CWI</option><option id="m2ESH">ESH</option><option id="m2EWI">EWI</option><option id="m2FRI">FRI</option><option id="m2FTCH">FTCH</option><option id="m2GB">GB</option><option id="m2GBU">GBU</option><option id="m2HC">HC</option><option id="m2IWI">IWI</option><option id="m2LC">LC</option><option id="m2LI">LI</option><option id="m2PRT">PRT</option><option id="m2RIRI">RIRI</option><option id="m2ST">ST</option><option id="m2TRV">TRV</option><option id="m2TTZC">TTZC</option>    </select>
 </div>
 
+<div id="m2materialsDD">
+    <label>Material:</label><br>
+    <select id="m2material"></select>
+</div>
+
 <div id="m2installerComps">
     <label>Installer Company:</label>
     <input id="m2installerCompany"></input>
@@ -290,7 +300,7 @@
 
 <div id="m2installerNameList">
     <label>Installer Name:</label>
-    <input id="m2installerName"></input>
+    <select id="m2installerName"></select>
 </div>
 
 <div id="m2PAScert">
@@ -310,6 +320,11 @@
     </select>
 </div>
 
+<div id="m3materialsDD">
+    <label>Material:</label><br>
+    <select id="m3material"></select>
+</div>
+
 <div id="m3installerComps">
     <label>Installer Company:</label>
     <input id="m3installerCompany"></input>
@@ -317,7 +332,7 @@
 
 <div id="m3installerNameList">
     <label>Installer Name:</label>
-    <input id="m3installerName"></input>
+    <select id="m3installerName"></select>
 </div>
 
 <div id="m3PAScert">
@@ -337,6 +352,11 @@
     </select>
 </div>
 
+<div id="m4materialsDD">
+    <label>Material:</label><br>
+    <select id="m4material"></select>
+</div>
+
 <div id="m4installerComps">
     <label>Installer Company:</label>
     <input id="m4installerCompany"></input>
@@ -344,7 +364,7 @@
 
 <div id="m4installerNameList">
     <label>Installer Name:</label>
-    <input id="m4installerName"></input>
+    <select id="m4installerName"></select>
 </div>
 
 <div id="m4PAScert">
@@ -364,14 +384,19 @@
     </select>
 </div>
 
-<div id="m5installerComps">
-    <label>Installer Company:</label>
-    <input id="m5installerCompany"></input>
+<div id="m5materialsDD">
+    <label>Material:</label><br>
+    <select id="m5material"></select>
 </div>
 
 <div id="m5installerNameList">
     <label>Installer Name:</label>
-    <input id="m5installerName"></input>
+    <select id="m5installerName"></select>
+</div>
+
+<div id="m5installerComps">
+    <label>Installer Company:</label>
+    <input id="m5installerCompany"></input>
 </div>
 
 <div id="m5PAScert">
@@ -388,8 +413,10 @@
     </form>
 
     <script src="https://apis.google.com/js/api.js"></script>
-    <script type="module" src="javascript/PDFextraction.js"></script>
+    <script src="javascript/measures.js"></script>
+    <script src="javascript/PDFextraction.js" type="module"></script>    
     <script src="javascript/pdfCreator.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     
     <!-- <script src="https://unpkg.com/pdf-lib"></script> -->

@@ -1,7 +1,18 @@
-#landlordDiv {
-    display: none;
-}
+#landlordDiv, 
+#m2measureListDiv, #m2materialsDD, #m2installerComps, #m2installerNameList, #m2PAScert, #m2POPTs, 
+#m3measureListDiv, #m3materialsDD, #m3installerComps, #m3installerNameList, #m3PAScert, #m3POPTs, 
+#m4measureListDiv, #m4materialsDD, #m4installerComps, #m4installerNameList, #m4PAScert, #m4POPTs, 
+#m5measureListDiv, #m5materialsDD, #m5installerComps, #m5installerNameList, #m5PAScert, #m5POPTs 
+{ display: none; }
 
 [id^="EX-"] {
     display: none;
+}
+
+[id$="material"] {
+    width: 150px;
+}
+
+[id$="installerName"] {
+    width: 140px;
 }
