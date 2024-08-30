@@ -93,18 +93,6 @@ export function handlePdfExtraction() {
                             town: document.getElementById('town').value
                         });
 
-                        // Search for postcode and address number, then fill form
-                        searchPostcode(postcode, addressNumber).then(function(record) {
-                            // Log the data retrieved from the searchPostcode function
-                            console.log('Data retrieved from searchPostcode:', record);
-
-                            document.getElementById('sName').value = record.surname || "";
-                            document.getElementById('fName').value = record.forename || "";
-                            document.getElementById('URN').value = record.urn || "";
-                        }).catch(function(error) {
-                            console.error('Error retrieving data from Google Sheets:', error);
-                        });
-
                         searchSubmission(postcode).then(function(record) {
                             // Log the data retrieved from searchSubmission function
                             console.log('Data retrieved from searchSubmission:', record);
@@ -137,6 +125,18 @@ export function handlePdfExtraction() {
                             console.error('Error retrieving data from Google Sheets:', error);
                         });
 
+                        // Search for postcode and address number, then fill form
+                        searchPostcode(postcode, addressNumber).then(function(record) {
+                            // Log the data retrieved from the searchPostcode function
+                            console.log('Data retrieved from searchPostcode:', record);
+
+                            document.getElementById('sName').value = record.surname || "";
+                            document.getElementById('fName').value = record.forename || "";
+                            document.getElementById('URN').value = record.urn || "";
+                        }).catch(function(error) {
+                            console.error('Error retrieving data from Google Sheets:', error);
+                        });
+
                         // Additional data extraction
                         var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
                         if (match) {
@@ -161,8 +161,8 @@ export function handlePdfExtraction() {
                     }
 
                     // Fill the form fields with the extracted data
-                    document.getElementById('surveyDate').value = convertDateFormat(extractedData.assessment_date) || "";
-                    document.getElementById('submissionDate').value = convertDateFormat(extractedData.submission_date) || "";
+                    document.getElementById('surveyDate').value = extractedData.assessment_date || "";
+                    document.getElementById('submissionDate').value = extractedData.submission_date || "";
                     document.getElementById('totalFloorArea').value = extractedData.total_floor_area || "";
                     document.getElementById('SAPrating').value = extractedData.current_efficiency_rating || "";
                     document.getElementById('rdsapNum').value = extractedData.reference_number || "";
