@@ -1,10 +1,10 @@
 .formContainer {
   display: grid;
-  grid-template-columns: 98px 150px 133px 150px 125px 106px 98px;
+  grid-template-columns: 98px 150px 133px 150px 125px 121px 98px;
   grid-template-rows: repeat(11, auto);
   /*   grid-template-rows: 170px repeat(5, auto) 20px 90px 60px repeat(2, 20px); */
   grid-template-areas: ". names pd address dates measurements FSreq"
-                       "m1List material nameList installComp pasCert popt ."
+                       "m1List material nameList installComp pasCert popt SPreq"
                        "m2List m2material m2nameList m2installComp m2pasCert m2popt ."
                        "m3List m3material m3nameList m3installComp m3pasCert m3popt ."
                        "m4List m4material m4nameList m4installComp m4pasCert m4popt ."
@@ -16,7 +16,7 @@
                        "EX-mainProp EX-wallType EX-roomHeight EX-wallPerim EX-roofTypes EX-floorArea .";
 
   justify-content: center;
-  gap: 20px;
+  column-gap: 25px;
   }
 
 #names {grid-area: names}
@@ -59,13 +59,7 @@
 #extensionAdd {grid-area: exAdd}
 
 #frontSheetRequestor {grid-area: FSreq}
-
-input {
-width: 100%;
-box-sizing: border-box;
-margin: 10px 0px;}
-
-select {margin: 10px 0px;}
+#smartPackRequestor {grid-area: SPreq}
 
 #tel, #landlord {width: 124px;}
 #postcode {width: 80px;}

@@ -1,3 +1,15 @@
+/* Colours:
+    background-color: #e7e6ec;
+
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 10px #f5f5f5 solid;
+
+    limegreen
+
+    mediumseagreen (Label colour)
+*/
+
 #landlordDiv, 
 #m2measureListDiv, #m2materialsDD, #m2installerComps, #m2installerNameList, #m2PAScert, #m2POPTs, 
 #m3measureListDiv, #m3materialsDD, #m3installerComps, #m3installerNameList, #m3PAScert, #m3POPTs, 
@@ -16,3 +28,23 @@
 [id$="installerName"] {
     width: 140px;
 }
+
+label {
+    text-transform: uppercase;
+}
+
+img {width: 80px;}
+
+label {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: arial;
+}
+
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0px;
+    padding: 3px;
+    border: 1px black solid;}

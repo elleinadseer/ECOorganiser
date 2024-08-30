@@ -17,61 +17,60 @@
         <h1>PDF Text Extractor</h1>
         <input type="file" id="uploadPdf" accept="application/pdf">
 
-     <form id="sendableForm">
+     <form id="sendableForm" class="formContainer">
 
-    <section class="formContainer">        
         <div id="names">
-            <label for="fName">Forename:</label><br>
+            <label for="fName">Forename</label><br>
             <input type="text" id="fName">
-            <label for="mName">Middle name:</label><br>
+            <label for="mName">Middle name</label><br>
             <input type="text" id="mName">
-            <label for="sName">Surname:</label><br>
+            <label for="sName">Surname</label><br>
             <input type="text" id="sName">
         </div>
 
         <div id="personalDetails">
-            <label for="tel">Telephone Number:</label>
+            <label for="tel">Telephone Number</label>
             <input type="tel" id="tel">
 
-            <label for="tenancy">Tenancy:</label>
+            <label for="tenancy">Tenancy</label>
             <select>
                 <option id="privateTenant">Owner Occupied</option>
                 <option id="ownerOccupied">Private Tenant</option>
                 <option id="socialHousing">Social Housing</option>
             </select>
           <div id="landlordDiv">
-            <label for="landlord">Landlord:</label>
+            <label for="landlord">Landlord</label>
             <input type="text" id="landlord">
           </div>
         </div>
 
         <div id="address">
-            <label for="postcode">Postcode:</label><br>
+            <label for="postcode">Postcode</label><br>
             <input type="text" id="postcode"><br>
-            <label for="street">Street:</label>
+            <label for="street">Street</label>
             <input type="text" id="street">
-            <label for="town">Town:</label>
+            <label for="town">Town</label>
             <input type="text" id="town">
         </div>
 
         <div id="dates">
-            <label for="surveyDate">Survey Date:</label>
+            <label for="surveyDate">Survey Date</label>
             <input type="text" id="surveyDate">
-            <label for="submissionDate">Submission Date:</label>
+            <label for="submissionDate">Submission Date</label>
             <input type="text" id="submissionDate">
-            <label for="installDate">Install Date:</label>
+            <label for="installDate">Install Date</label>
             <input type="text" id="installDateInput">
         </div>
 
         <div id="measurements">
             <label for="totalFloorArea">Total Floor Area</label>
             <input type="number" id="totalFloorArea">
-            <label for="SAPrating">SAP Rating:</label>
+            <label for="SAPrating">SAP Rating</label>
             <input type="number" id="SAPrating">      
         </div>
 
         <div id="measureListDiv">
-        <label>PAS Measure:</label><br>
+        <label>PAS Measure</label><br>
           <select id="m1measureList">
             <option id="CWI">CWI</option>
             <option id="ESH">ESH</option>
@@ -93,34 +92,34 @@
         </div>
 
         <div id="materialsDD">
-            <label>Material:</label><br>
+            <label>Material</label><br>
             <select id="m1material"></select>
         </div>
 
         <div id="installerComps">
-          <label>Installer Company:</label>
+          <label>Installer Company</label>
             <input id="m1installerCompany"></input>
         </div>
         
         <div id="installerNameList">
-        <label>Installer Name:</label>
+        <label>Installer Name</label>
             <select id="m1installerName"></select>
         </div>
 
         <div id="PAScert">
-            <label>PAS Certificate:</label>
+            <label>PAS Certificate</label>
                 <input id="m1PAScertNum"></input>
         </div>
 
         <div id="POPTs">
-             <label for="POPT">POPT:</label>
+             <label for="POPT">POPT</label>
             <input type="text" id="m1POPT">
          </div>
 
     <div id="measureAdd"> Add another measure </div>
 
     <div id="govScheme"> 
-            <label for="scheme">Scheme:</label>
+            <label for="scheme">Scheme</label>
                 <select id="schemeSelect">
                     <option id="HTHG">HTHG</option>
                     <option id="flex">Flex</option>
@@ -133,12 +132,12 @@
         </div>
 
         <div id="URNdisplay">
-            <label for="URN">URN:</label>
+            <label for="URN">URN</label>
             <input type="number" id="URN">
         </div>
 
         <div id="evidence"> 
-            <label for="occupanyEvidence">Occupany Evidence:</label>
+            <label for="occupanyEvidence">Occupany Evidence</label>
             <select>
                 <option id="utilityBill">Utility Bill</option>
                 <option id="mortgageStatement">Mortgage Statement</option>
@@ -157,7 +156,7 @@
         </div>
 
         <div id="YOprop"> 
-            <label for="yearOfProperty">Year of Property:</label>
+            <label for="yearOfProperty">Year of Property</label>
             <select id="YOpropSelect">
                     <option id="before1900">Before 1900</option>
                     <option id="before1919">Before 1919</option>
@@ -185,11 +184,11 @@
           </div>
 
         <div id="rdsap"> 
-            <label for="rdsapNum">RdSAP Reference:</label>
+            <label for="rdsapNum">RdSAP Reference</label>
             <input type="number" id="rdsapNum">
         </div>
 
-        <label id="mainProp">Main Property:</label>
+        <label id="mainProp">Main Property</label>
 
         <div id="wallConstruct">
             <label for="wallConstruction">Wall Construction</label>
@@ -204,17 +203,17 @@
         </div>
         
         <div id="roomHeightNum">
-            <label for="roomHeight">Room Height:</label>
+            <label for="roomHeight">Room Height</label>
             <input type="number" id="roomHeight">
         </div>
             
         <div id="wallPerim">
-            <label for="wallPerimeter">Wall Perimeter:</label>
+            <label for="wallPerimeter">Wall Perimeter</label>
             <input type="number" id="wallPerimeter">
         </div>
 
         <div id="roofTypes">
-            <label for="roofType">Roof Type:</label>
+            <label for="roofType">Roof Type</label>
             <select>
                 <option id="flat">Flat</option>
                 <option id="pitched">Pitched</option>
@@ -224,14 +223,14 @@
         </div>
         
         <div id="floorAreaDiv">
-            <label for="floorArea">Floor Area:</label>
+            <label for="floorArea">Floor Area</label>
             <input type="number" id="floorArea">
         </div>
 
 
      <div id="extensionAdd"> Add an extension </div>
 
-        <label id="EX-prop">Extension 1:</label>
+        <label id="EX-prop">Extension 1</label>
 
         <div id="EX-wallConstruct">
             <label for="EX-wallConstruction">Wall Construction</label>
@@ -246,17 +245,17 @@
         </div>
         
         <div id="EX-roomHeightNum">
-            <label for="EX-roomHeight">Room Height:</label>
+            <label for="EX-roomHeight">Room Height</label>
             <input type="number" id="EX-roomHeight">
         </div>
             
         <div id="EX-wallPerim">
-            <label for="EX-wallPerimeter">Wall Perimeter:</label>
+            <label for="EX-wallPerimeter">Wall Perimeter</label>
             <input type="number" id="EX-wallPerimeter">
         </div>
 
         <div id="EX-roofTypes">
-            <label for="EX-roofType">Roof Type:</label>
+            <label for="EX-roofType">Roof Type</label>
             <select id="EX-roofType">
                 <option id="flat">Flat</option>
                 <option id="pitched">Pitched</option>
@@ -266,15 +265,17 @@
         </div>
         
         <div id="EX-floorAreaDiv">
-            <label for="EX-floorArea">Floor Area:</label>
+            <label for="EX-floorArea">Floor Area</label>
             <input type="number" id="EX-floorArea">
         </div>
 
         <div id="frontSheetRequestor" style="cursor: pointer;"> 
-            Click here to generate a front sheet from this information. 
+            <img src="SVGs/frontSheetSVG.svg" alt="Front Sheet File">
         </div>
 
-
+        <div id="smartPackRequestor" style="cursor: pointer;"> 
+            <img src="./SVGs/smartPackSVG.svg" alt="Smart Pack File">
+        </div>
 
 
 
@@ -409,7 +410,6 @@
     <input type="text" id="m5POPT">
 </div>
 
-    </section>
     </form>
 
     <script src="https://apis.google.com/js/api.js"></script>
