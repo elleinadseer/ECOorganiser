@@ -75,23 +75,24 @@ export function handlePdfExtraction() {
                     console.log("Extracted Data:", extractedData);
 
                     // Extract the address using regex
-                    var addressMatch = text.match(/Dwelling Address\s*(\d+),\s*([\w\s]+?),\s*([A-Z\s]+?),\s*([A-Z\d]{2,4}\s\d[A-Z]{2})/);
+                    var addressMatch = text.match(/Dwelling Address\s*(\d+),\s*(.+?),\s*([A-Z\s]+?),\s*([A-Z\d]{2,4}\s\d[A-Z]{2})/);
                     if (addressMatch) {
-                        var street = `${addressMatch[1]} ${addressMatch[2].trim()}`;
+                        var addressNumber = addressMatch[1].trim();
+                        var street = `${addressNumber} ${addressMatch[2].trim()}`;
                         var town = capitaliseFirstLetter(addressMatch[3].trim());
                         var postcode = addressMatch[4].trim();
-                        var addressNumber = addressMatch[1].trim();
-
+                    
                         // Fill in the address fields
                         document.getElementById('postcode').value = postcode;
                         document.getElementById('street').value = street;
                         document.getElementById('town').value = town;
-
+                    
                         console.log('Address match results:', {
                             postcode: document.getElementById('postcode').value,
                             street: document.getElementById('street').value,
                             town: document.getElementById('town').value
                         });
+
 
                         searchSubmission(postcode).then(function(record) {
                             // Log the data retrieved from searchSubmission function
