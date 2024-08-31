@@ -12,13 +12,24 @@
          <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
        </head>
-     <body> 
+     <body class="inLineFormat"> 
+
+        <section class="downloadColumn">
+            <div id="frontSheetRequestor" style="cursor: pointer;">
+                <img src="SVGs/frontSheetSVG.svg" alt="Front Sheet File">
+            </div>
+        
+            <div id="smartPackRequestor" style="cursor: pointer;"> 
+                <img src="./SVGs/smartPackSVG.svg" alt="Smart Pack File">
+            </div>
+        </section>
+
+     <form id="sendableForm">
 
         <h1>PDF Text Extractor</h1>
         <input type="file" id="uploadPdf" accept="application/pdf">
 
-     <form id="sendableForm" class="formContainer">
-
+    <section class="frontContainer gridFormat">
         <div id="names">
             <label for="fName">Forename</label><br>
             <input type="text" id="fName">
@@ -68,7 +79,9 @@
             <label for="SAPrating">SAP Rating</label>
             <input type="number" id="SAPrating">      
         </div>
+    </section>
 
+    <section class="measuresContainer gridFormat">
         <div id="measureListDiv">
         <label>PAS Measure</label><br>
           <select id="m1measureList">
@@ -116,8 +129,10 @@
             <input type="text" id="m1POPT">
          </div>
 
-    <div id="measureAdd"> Add another measure </div>
+      <div id="measureAdd"> Add another measure </div>
+    </section>
 
+    <section class="smartContainer gridFormat">
     <div id="govScheme"> 
             <label for="scheme">Scheme</label>
                 <select id="schemeSelect">
@@ -187,7 +202,9 @@
             <label for="rdsapNum">RdSAP Reference</label>
             <input type="number" id="rdsapNum">
         </div>
+    </section>
 
+    <section class="propContainer gridFormat">
         <label id="mainProp">Main Property</label>
 
         <div id="wallConstruct">
@@ -268,18 +285,7 @@
             <label for="EX-floorArea">Floor Area</label>
             <input type="number" id="EX-floorArea">
         </div>
-
-        <div id="frontSheetRequestor" style="cursor: pointer;"> 
-            <img src="SVGs/frontSheetSVG.svg" alt="Front Sheet File">
-        </div>
-
-        <div id="smartPackRequestor" style="cursor: pointer;"> 
-            <img src="./SVGs/smartPackSVG.svg" alt="Smart Pack File">
-        </div>
-
-
-
-
+    </section>
     <!-- EXTRA MEASURES BEGIN HERE -->
 
     <!-- Measure 2 -->
@@ -410,7 +416,8 @@
     <input type="text" id="m5POPT">
 </div>
 
-    </form>
+<!-- END OF FORM -->
+</form>
 
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="javascript/measures.js"></script>

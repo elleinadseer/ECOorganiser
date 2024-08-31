@@ -43,8 +43,9 @@ label {
 }
 
 input, select {
-    width: 100%;
     box-sizing: border-box;
     margin: 8px 0px;
     padding: 3px;
-    border: 1px black solid;}
+    border: 1px grey solid;}
+
+input {width: 100%;}
