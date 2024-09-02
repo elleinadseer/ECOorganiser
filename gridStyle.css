@@ -27,12 +27,12 @@
   ". . . measureAdd . .";
 
   margin: 0px 20px;
-  background-color: #f1f1f1;
-  border: 20px #f1f1f1 solid;
+  background-color: lightgrey;
+  border: 20px lightgrey solid;
   border-radius: 20px;
 }
 
-.smartContainer {  grid-template-areas:  "URN scheme evidence rdsap yearOf propType";
+.smartContainer {  grid-template-areas:  "URN scheme evidence propType yearOf rdsap";
   grid-template-rows: auto; 
   padding: 15px 0px; 
 }
@@ -43,8 +43,8 @@
   ". . . exAdd . ." ;
 
   margin: 0px 20px;
-  background-color: #efefef;
-  border: 20px #efefef solid;
+  background-color: lightgrey;
+  border: 20px lightgrey solid;
   border-radius: 20px;
 }
 

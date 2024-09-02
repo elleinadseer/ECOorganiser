@@ -11,7 +11,8 @@
 
          <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
-       </head>
+      </head>
+
      <body class="inLineFormat"> 
 
         <section class="downloadColumn">
@@ -29,7 +30,7 @@
         <h1>PDF Text Extractor</h1>
         <input type="file" id="uploadPdf" accept="application/pdf">
 
-    <section class="frontContainer gridFormat">
+     <section class="frontContainer gridFormat">
         <div id="names">
             <label for="fName">Forename</label><br>
             <input type="text" id="fName">
@@ -44,11 +45,13 @@
             <input type="tel" id="tel">
 
             <label for="tenancy">Tenancy</label>
-            <select>
+            <select id="tenancySelect">
+                <option></option>
                 <option id="privateTenant">Owner Occupied</option>
                 <option id="ownerOccupied">Private Tenant</option>
                 <option id="socialHousing">Social Housing</option>
             </select>
+            
           <div id="landlordDiv">
             <label for="landlord">Landlord</label>
             <input type="text" id="landlord">
@@ -85,6 +88,7 @@
         <div id="measureListDiv">
         <label>PAS Measure</label><br>
           <select id="m1measureList">
+            <option></option>
             <option id="CWI">CWI</option>
             <option id="ESH">ESH</option>
             <option id="EWI">EWI</option>
@@ -130,12 +134,142 @@
          </div>
 
       <div id="measureAdd"> Add another measure </div>
+
+      <!-- More measures starts -->
+      <div id="m2measureListDiv">
+        <label>PAS Measure:</label><br>
+        <select id="m2measureList">
+            <option></option><option id="m2CWI">CWI</option><option id="m2ESH">ESH</option><option id="m2EWI">EWI</option><option id="m2FRI">FRI</option><option id="m2FTCH">FTCH</option><option id="m2GB">GB</option><option id="m2GBU">GBU</option><option id="m2HC">HC</option><option id="m2IWI">IWI</option><option id="m2LC">LC</option><option id="m2LI">LI</option><option id="m2PRT">PRT</option><option id="m2RIRI">RIRI</option><option id="m2ST">ST</option><option id="m2TRV">TRV</option><option id="m2TTZC">TTZC</option>    </select>
+    </div>
+    
+    <div id="m2materialsDD">
+        <label>Material:</label><br>
+        <select id="m2material"></select>
+    </div>
+    
+    <div id="m2installerComps">
+        <label>Installer Company:</label>
+        <input id="m2installerCompany"></input>
+    </div>
+    
+    <div id="m2installerNameList">
+        <label>Installer Name:</label>
+        <select id="m2installerName"></select>
+    </div>
+    
+    <div id="m2PAScert">
+        <label>PAS Certificate:</label>
+        <input id="m2PAScertNum"></input>
+    </div>
+    
+    <div id="m2POPTs">
+        <label for="m2POPT">POPT:</label>
+        <input type="text" id="m2POPT">
+    </div>
+    
+    <!-- Measure 3 -->
+    <div id="m3measureListDiv">
+        <label>PAS Measure:</label><br>
+        <select id="m3measureList"><option></option><option id="m3CWI">CWI</option><option id="m3ESH">ESH</option><option id="m3EWI">EWI</option><option id="m3FRI">FRI</option><option id="m3FTCH">FTCH</option><option id="m3GB">GB</option><option id="m3GBU">GBU</option><option id="m3HC">HC</option><option id="m3IWI">IWI</option><option id="m3LC">LC</option><option id="m3LI">LI</option><option id="m3PRT">PRT</option><option id="m3RIRI">RIRI</option><option id="m3ST">ST</option><option id="m3TRV">TRV</option><option id="m3TTZC">TTZC</option>
+        </select>
+    </div>
+    
+    <div id="m3materialsDD">
+        <label>Material:</label><br>
+        <select id="m3material"></select>
+    </div>
+    
+    <div id="m3installerComps">
+        <label>Installer Company:</label>
+        <input id="m3installerCompany"></input>
+    </div>
+    
+    <div id="m3installerNameList">
+        <label>Installer Name:</label>
+        <select id="m3installerName"></select>
+    </div>
+    
+    <div id="m3PAScert">
+        <label>PAS Certificate:</label>
+        <input id="m3PAScertNum"></input>
+    </div>
+    
+    <div id="m3POPTs">
+        <label for="m3POPT">POPT:</label>
+        <input type="text" id="m3POPT">
+    </div>
+    
+    <!-- Measure 4 -->
+    <div id="m4measureListDiv">
+        <label>PAS Measure:</label><br>
+    <select id="m4measureList"><option></option><option id="m4CWI">CWI</option><option id="m4ESH">ESH</option><option id="m4EWI">EWI</option><option id="m4FRI">FRI</option><option id="m4FTCH">FTCH</option><option id="m4GB">GB</option><option id="m4GBU">GBU</option><option id="m4HC">HC</option><option id="m4IWI">IWI</option><option id="m4LC">LC</option><option id="m4LI">LI</option><option id="m4PRT">PRT</option><option id="m4RIRI">RIRI</option><option id="m4ST">ST</option><option id="m4TRV">TRV</option><option id="m4TTZC">TTZC</option>
+        </select>
+    </div>
+    
+    <div id="m4materialsDD">
+        <label>Material:</label><br>
+        <select id="m4material"></select>
+    </div>
+    
+    <div id="m4installerComps">
+        <label>Installer Company:</label>
+        <input id="m4installerCompany"></input>
+    </div>
+    
+    <div id="m4installerNameList">
+        <label>Installer Name:</label>
+        <select id="m4installerName"></select>
+    </div>
+    
+    <div id="m4PAScert">
+        <label>PAS Certificate:</label>
+        <input id="m4PAScertNum"></input>
+    </div>
+    
+    <div id="m4POPTs">
+        <label for="m4POPT">POPT:</label>
+        <input type="text" id="m4POPT">
+    </div>
+    
+    <!-- Measure 5 -->
+    <div id="m5measureListDiv">
+        <label>PAS Measure:</label><br>
+        <select id="m5measureList"><option></option><option id="m5CWI">CWI</option><option id="m5ESH">ESH</option><option id="m5EWI">EWI</option><option id="m5FRI">FRI</option><option id="m5FTCH">FTCH</option><option id="m5GB">GB</option><option id="m5GBU">GBU</option><option id="m5HC">HC</option><option id="m5IWI">IWI</option><option id="m5LC">LC</option><option id="m5LI">LI</option><option id="m5PRT">PRT</option><option id="m5RIRI">RIRI</option><option id="m5ST">ST</option><option id="m5TRV">TRV</option><option id="m5TTZC">TTZC</option>
+        </select>
+    </div>
+    
+    <div id="m5materialsDD">
+        <label>Material:</label><br>
+        <select id="m5material"></select>
+    </div>
+    
+    <div id="m5installerNameList">
+        <label>Installer Name:</label>
+        <select id="m5installerName"></select>
+    </div>
+    
+    <div id="m5installerComps">
+        <label>Installer Company:</label>
+        <input id="m5installerCompany"></input>
+    </div>
+    
+    <div id="m5PAScert">
+        <label>PAS Certificate:</label>
+        <input id="m5PAScertNum"></input>
+    </div>
+    
+    <div id="m5POPTs">
+        <label for="m5POPT">POPT:</label>
+        <input type="text" id="m5POPT">
+    </div>
+    <!-- More measures ends -->
     </section>
 
     <section class="smartContainer gridFormat">
     <div id="govScheme"> 
             <label for="scheme">Scheme</label>
                 <select id="schemeSelect">
+                    <option></option>
                     <option id="HTHG">HTHG</option>
                     <option id="flex">Flex</option>
                     <option id="GBIS">GBIS</option>
@@ -163,16 +297,49 @@
 
         <div id="propType"> 
             <label for="propertyType">Property Type</label>
-            <select>
-                <option id="house">House</option>
-                <option id="flat">Flat</option>
-                <option id="parkHome">Park Home</option>
+            <select id="propertyType">
+                <option></option>
+
+                <optgroup label="House">
+                    <option id="semiDetachedHouse">Semi-Detached House</option>
+                    <option id="detachedHouse">Detached House</option>
+                    <option id="endTerraceHouse">End-Terrace House</option>
+                    <option id="midTerraceHouse">Mid-Terrace House</option>
+                    <option id="bungalow">Bungalow</option>
+                </optgroup>
+            
+                <optgroup label="Flat/Maisonette">
+                    <option id="topFloorFlat">Top Floor Flat</option>
+                    <option id="midFloorFlat">Mid Floor Flat</option>
+                    <option id="groundFloorFlat">Ground Floor Flat</option>
+                    <option id="topFloorMaisonette">Top Floor Maisonette</option>
+                    <option id="midFloorMaisonette">Mid Floor Maisonette</option>
+                    <option id="groundFloorMaisonette">Ground Floor Maisonette</option>
+                    <option id="studioFlat">Studio Flat</option>
+                </optgroup>
+            
+                <optgroup label="Park Home">
+                    <option id="parkHome">Park Home</option>
+                </optgroup>
+
+                <optgroup label="Other">
+                    <option id="convertedFlat">Converted Flat</option>
+                    <option id="studioFlat">Studio Flat</option>
+                    <option id="duplex">Duplex</option>
+                    <option id="triplex">Triplex</option>     
+                    <option id="cottage">Cottage</option>
+                    <option id="farmhouse">Farmhouse</option>
+                    <option id="townhouse">Townhouse</option>
+                    <option id="penthouse">Penthouse</option>         
+                    <option id="listedBuilding">Listed Building</option>  
+                </optgroup>
             </select>
         </div>
 
         <div id="YOprop"> 
             <label for="yearOfProperty">Year of Property</label>
             <select id="YOpropSelect">
+                    <option></option>
                     <option id="before1900">Before 1900</option>
                     <option id="before1919">Before 1919</option>
                     <option id="1900-1929">1900-1929</option>
@@ -210,6 +377,7 @@
         <div id="wallConstruct">
             <label for="wallConstruction">Wall Construction</label>
             <select id="wallConstructSelect">
+                <option></option>
                 <option id="solidBrick">Solid Brick</option>
                 <option id="cavity">Cavity</option>
                 <option id="cob">Cob</option>
@@ -230,8 +398,9 @@
         </div>
 
         <div id="roofTypes">
-            <label for="roofType">Roof Type</label>
-            <select>
+            <label for="roofTypeLabel">Roof Type</label>
+            <select id="roofType">
+                <option></option>
                 <option id="flat">Flat</option>
                 <option id="pitched">Pitched</option>
                 <option id="RIR">RIR</option>
@@ -252,6 +421,7 @@
         <div id="EX-wallConstruct">
             <label for="EX-wallConstruction">Wall Construction</label>
             <select id="EX-wallConstructSelect">
+                <option></option>
                 <option id="solidBrick">Solid Brick</option>
                 <option id="cavity">Cavity</option>
                 <option id="cob">Cob</option>
@@ -286,135 +456,8 @@
             <input type="number" id="EX-floorArea">
         </div>
     </section>
-    <!-- EXTRA MEASURES BEGIN HERE -->
 
-    <!-- Measure 2 -->
-<div id="m2measureListDiv">
-    <label>PAS Measure:</label><br>
-    <select id="m2measureList">
-        <option></option><option id="m2CWI">CWI</option><option id="m2ESH">ESH</option><option id="m2EWI">EWI</option><option id="m2FRI">FRI</option><option id="m2FTCH">FTCH</option><option id="m2GB">GB</option><option id="m2GBU">GBU</option><option id="m2HC">HC</option><option id="m2IWI">IWI</option><option id="m2LC">LC</option><option id="m2LI">LI</option><option id="m2PRT">PRT</option><option id="m2RIRI">RIRI</option><option id="m2ST">ST</option><option id="m2TRV">TRV</option><option id="m2TTZC">TTZC</option>    </select>
-</div>
 
-<div id="m2materialsDD">
-    <label>Material:</label><br>
-    <select id="m2material"></select>
-</div>
-
-<div id="m2installerComps">
-    <label>Installer Company:</label>
-    <input id="m2installerCompany"></input>
-</div>
-
-<div id="m2installerNameList">
-    <label>Installer Name:</label>
-    <select id="m2installerName"></select>
-</div>
-
-<div id="m2PAScert">
-    <label>PAS Certificate:</label>
-    <input id="m2PAScertNum"></input>
-</div>
-
-<div id="m2POPTs">
-    <label for="m2POPT">POPT:</label>
-    <input type="text" id="m2POPT">
-</div>
-
-<!-- Measure 3 -->
-<div id="m3measureListDiv">
-    <label>PAS Measure:</label><br>
-    <select id="m3measureList"><option></option><option id="m3CWI">CWI</option><option id="m3ESH">ESH</option><option id="m3EWI">EWI</option><option id="m3FRI">FRI</option><option id="m3FTCH">FTCH</option><option id="m3GB">GB</option><option id="m3GBU">GBU</option><option id="m3HC">HC</option><option id="m3IWI">IWI</option><option id="m3LC">LC</option><option id="m3LI">LI</option><option id="m3PRT">PRT</option><option id="m3RIRI">RIRI</option><option id="m3ST">ST</option><option id="m3TRV">TRV</option><option id="m3TTZC">TTZC</option>
-    </select>
-</div>
-
-<div id="m3materialsDD">
-    <label>Material:</label><br>
-    <select id="m3material"></select>
-</div>
-
-<div id="m3installerComps">
-    <label>Installer Company:</label>
-    <input id="m3installerCompany"></input>
-</div>
-
-<div id="m3installerNameList">
-    <label>Installer Name:</label>
-    <select id="m3installerName"></select>
-</div>
-
-<div id="m3PAScert">
-    <label>PAS Certificate:</label>
-    <input id="m3PAScertNum"></input>
-</div>
-
-<div id="m3POPTs">
-    <label for="m3POPT">POPT:</label>
-    <input type="text" id="m3POPT">
-</div>
-
-<!-- Measure 4 -->
-<div id="m4measureListDiv">
-    <label>PAS Measure:</label><br>
-<select id="m4measureList"><option></option><option id="m4CWI">CWI</option><option id="m4ESH">ESH</option><option id="m4EWI">EWI</option><option id="m4FRI">FRI</option><option id="m4FTCH">FTCH</option><option id="m4GB">GB</option><option id="m4GBU">GBU</option><option id="m4HC">HC</option><option id="m4IWI">IWI</option><option id="m4LC">LC</option><option id="m4LI">LI</option><option id="m4PRT">PRT</option><option id="m4RIRI">RIRI</option><option id="m4ST">ST</option><option id="m4TRV">TRV</option><option id="m4TTZC">TTZC</option>
-    </select>
-</div>
-
-<div id="m4materialsDD">
-    <label>Material:</label><br>
-    <select id="m4material"></select>
-</div>
-
-<div id="m4installerComps">
-    <label>Installer Company:</label>
-    <input id="m4installerCompany"></input>
-</div>
-
-<div id="m4installerNameList">
-    <label>Installer Name:</label>
-    <select id="m4installerName"></select>
-</div>
-
-<div id="m4PAScert">
-    <label>PAS Certificate:</label>
-    <input id="m4PAScertNum"></input>
-</div>
-
-<div id="m4POPTs">
-    <label for="m4POPT">POPT:</label>
-    <input type="text" id="m4POPT">
-</div>
-
-<!-- Measure 5 -->
-<div id="m5measureListDiv">
-    <label>PAS Measure:</label><br>
-    <select id="m5measureList"><option></option><option id="m5CWI">CWI</option><option id="m5ESH">ESH</option><option id="m5EWI">EWI</option><option id="m5FRI">FRI</option><option id="m5FTCH">FTCH</option><option id="m5GB">GB</option><option id="m5GBU">GBU</option><option id="m5HC">HC</option><option id="m5IWI">IWI</option><option id="m5LC">LC</option><option id="m5LI">LI</option><option id="m5PRT">PRT</option><option id="m5RIRI">RIRI</option><option id="m5ST">ST</option><option id="m5TRV">TRV</option><option id="m5TTZC">TTZC</option>
-    </select>
-</div>
-
-<div id="m5materialsDD">
-    <label>Material:</label><br>
-    <select id="m5material"></select>
-</div>
-
-<div id="m5installerNameList">
-    <label>Installer Name:</label>
-    <select id="m5installerName"></select>
-</div>
-
-<div id="m5installerComps">
-    <label>Installer Company:</label>
-    <input id="m5installerCompany"></input>
-</div>
-
-<div id="m5PAScert">
-    <label>PAS Certificate:</label>
-    <input id="m5PAScertNum"></input>
-</div>
-
-<div id="m5POPTs">
-    <label for="m5POPT">POPT:</label>
-    <input type="text" id="m5POPT">
-</div>
 
 <!-- END OF FORM -->
 </form>
@@ -423,6 +466,7 @@
     <script src="javascript/measures.js"></script>
     <script src="javascript/PDFextraction.js" type="module"></script>    
     <script src="javascript/PDFcreator.js"></script>
+    <script src="javascript/appearenceChanges.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     

@@ -1,38 +1,13 @@
 import { populateInstallerInfo } from './measures.js';
 import { initClient, searchPostcode, searchSubmission } from './googleSheets.js';
-import { capitaliseFirstLetter, extractData, convertDateFormat, selectDropdownOption } from './helpers.js';
-
-function showMeasureRow(measureIndex) {
-    // Define the IDs of the elements to show
-    const measureListDiv = document.getElementById(`m${measureIndex}measureListDiv`);
-    const materialsDD = document.getElementById(`m${measureIndex}materialsDD`);
-    const installerComps = document.getElementById(`m${measureIndex}installerComps`);
-    const installerNameList = document.getElementById(`m${measureIndex}installerNameList`);
-    const PAScert = document.getElementById(`m${measureIndex}PAScert`);
-    const POPTs = document.getElementById(`m${measureIndex}POPTs`);
-
-    // Array of elements to show
-    const elementsToShow = [
-        measureListDiv,
-        materialsDD,
-        installerComps,
-        installerNameList,
-        PAScert,
-        POPTs
-    ];
-
-    // Iterate over each element and set its display property
-    elementsToShow.forEach(element => {
-        if (element) {
-            element.style.display = 'block'; // Show the element
-        }
-    });
-}
-
+import { capitaliseFirstLetter, extractData, selectDropdownOption } from './helpers.js';
+import { showMeasureRow } from './appearenceChanges.js';
 
 // Function to handle PDF extraction and form filling
 export function handlePdfExtraction() {
     document.getElementById('uploadPdf').addEventListener('change', function(e) {
+        clearForm();
+
         var file = e.target.files[0];
         var fileReader = new FileReader();
 
@@ -68,8 +43,8 @@ export function handlePdfExtraction() {
                         reference_number: extractData(/Reference\s+(\d+)/, text),
                         construction_year: extractData(/built in\s+[A-Z]\s+(\d{4}-\d{4})/, text),
                         property_type: extractData(/Property Type\s+(.+?)\s+Total Floor Area/, text),
-                        wall_type: extractData(/Wall Type:\s+(.+?)\s+Wall Insulation/, text),
-                        roof_type: extractData(/Roof Type:\s+(.+?),/, text),
+                        wall_type: extractData(/Wall Type:\s+[A-Z]{2}\s*(.+?)\s+Wall Insulation/, text),
+                        roof_type: extractData(/Roof Type:\s+\w+\s+(\w+)/, text),
                     };
 
                     console.log("Extracted Data:", extractedData);
@@ -167,11 +142,11 @@ export function handlePdfExtraction() {
                     document.getElementById('totalFloorArea').value = extractedData.total_floor_area || "";
                     document.getElementById('SAPrating').value = extractedData.current_efficiency_rating || "";
                     document.getElementById('rdsapNum').value = extractedData.reference_number || "";
-                    document.getElementById('propType').value = extractedData.property_type || "";
-                    document.getElementById('wallConstruct').value = extractedData.wall_type || "";
-                    document.getElementById('roofTypes').value = extractedData.roof_type || "";
 
                     // Select the appropriate option in the dropdowns
+                    selectDropdownOption('#roofType', extractedData.roof_type);
+                    selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
+                    selectDropdownOption('#propertyType', extractedData.property_type);
                     selectDropdownOption('#YOpropSelect', extractedData.construction_year);
                     selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
                     selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
@@ -182,6 +157,13 @@ export function handlePdfExtraction() {
 
             });
         };
+
+        function clearForm() {
+            var form = document.getElementById('yourFormId'); // Replace with your form's ID
+            if (form) {
+                form.reset(); // Reset form fields
+            }
+        }
 
         fileReader.readAsArrayBuffer(file);
     });
