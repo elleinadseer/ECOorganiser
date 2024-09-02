@@ -1,11 +1,18 @@
 /* Temporarily attached to body */
-.inLineFormat {    display: flex;
+.inLineFormat {    
+  display: flex;
   flex-direction: row-reverse;
   gap: 20px;
   justify-content: center;
 }
 
 .downloadColumn {padding-top: 150px}
+
+#sendableForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .gridFormat {
   display: grid;
@@ -14,17 +21,15 @@
   column-gap: 25px;
   }
 
-.frontContainer {  
-  grid-template-areas: ". names pd address dates measurements";
-  grid-template-rows: auto; }
+.frontContainer { grid-template-rows: auto; 
+  grid-template-areas: ". names pd address dates measurements"; }
 
-.measuresContainer {  grid-template-rows: repeat(6, auto);
+.measuresContainer {  grid-template-rows: repeat(5, auto);
   grid-template-areas: "m1List material nameList installComp pasCert popt"
   "m2List m2material m2nameList m2installComp m2pasCert m2popt"
   "m3List m3material m3nameList m3installComp m3pasCert m3popt"
   "m4List m4material m4nameList m4installComp m4pasCert m4popt"
-  "m5List m5material m5nameList m5installComp m5pasCert m5popt"
-  ". . . measureAdd . .";
+  "m5List m5material m5nameList m5installComp m5pasCert m5popt";
 
   margin: 0px 20px;
   background-color: #f1f1f1;
@@ -32,15 +37,14 @@
   border-radius: 20px;
 }
 
-.smartContainer {  grid-template-areas:  "URN scheme evidence rdsap yearOf propType";
-  grid-template-rows: auto; 
+.smartContainer { grid-template-rows: auto; 
+  grid-template-areas: "URN scheme evidence rdsap yearOf propType";
   padding: 15px 0px; 
 }
 
-.propContainer {grid-template-rows: repeat(3, auto); 
+.propContainer {grid-template-rows: repeat(2, auto); 
   grid-template-areas: "mainProp wallType roomHeight wallPerim roofTypes floorArea" 
-  "EX-mainProp EX-wallType EX-roomHeight EX-wallPerim EX-roofTypes EX-floorArea"
-  ". . . exAdd . ." ;
+  "EX-mainProp EX-wallType EX-roomHeight EX-wallPerim EX-roofTypes EX-floorArea" ;
 
   margin: 0px 20px;
   background-color: #efefef;
