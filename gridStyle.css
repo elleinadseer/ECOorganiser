@@ -8,14 +8,21 @@
 
 .downloadColumn {padding-top: 150px}
 
-.gridFormat { grid-template-columns: 98px 150px 133px 170px 125px 121px;
+#sendableForm{
   display: flex;
   flex-direction: column;
   align-items: center;
-  }
+}
+
+.gridFormat { grid-template-columns: 98px 150px 133px 170px 125px 121px;
+  display: grid;
+  justify-content: center;
+  column-gap: 20px;
+}
 
 .frontContainer { grid-template-areas: ". names pd address dates measurements";
-  grid-template-rows: auto; }
+  grid-template-rows: auto; 
+}
 
 .measuresContainer {  grid-template-rows: repeat(5, auto);
   grid-template-areas: "m1List material nameList installComp pasCert popt"
@@ -45,7 +52,7 @@
   border-radius: 20px;
 }
 
-#personalDetails, #dates {background-color: #f9f9f9}
+#personalDetails, #dates {background-color: #eeeeee}
 
 #names {grid-area: names}
 #personalDetails {grid-area: pd}
@@ -91,6 +98,27 @@
 
 #tel, #landlord {width: 124px;}
 #postcode {width: 80px;}
+
+.addOn {
+  border: 1px grey solid;
+  border-radius: 0px 0px 10px 10px;
+  border-top: none;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+
+label, .addOn {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: arial;
+}
+
+input, select {
+  box-sizing: border-box;
+  margin: 8px 0px;
+  padding: 3px;
+  border: 1px grey solid;}
 
 #measureAdd, #extensionAdd {
   display: flex;
