@@ -14,6 +14,12 @@ const GASEinstallers = [
 
 // Data structure for measures
 const measureData = {
+    LI: {
+        company:"Energy Saving Group",
+        installers: [ "Simon King", "Steven Brindle" ],
+        materialUsed: [ "Knauf Earthwool Loftroll 44 BS EN 13501-1", "Isover Spacesaver Loftroll" ],
+        PAScert: "OCEI34330"
+    },
     CWI: {
         company: "Energy Saving Group",
         installers: ["Steven Forbes"],

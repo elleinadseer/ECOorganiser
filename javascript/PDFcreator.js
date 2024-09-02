@@ -112,8 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Call the specific function to fill the form based on the PDF type
         await fillPdfFunction(form, data);
 
-        form.flatten(); // Flatten the form fields
-
         const pdfBytes = await pdfDoc.save();
 
         const blob = new Blob([pdfBytes], { type: 'application/pdf' });
