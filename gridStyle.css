@@ -7,15 +7,13 @@
 
 .downloadColumn {padding-top: 150px}
 
-.gridFormat {
+.gridFormat { grid-template-columns: 98px 150px 133px 170px 125px 121px;
   display: grid;
-  grid-template-columns: 98px 150px 133px 150px 125px 121px;
   justify-content: center;
   column-gap: 25px;
   }
 
-.frontContainer {  
-  grid-template-areas: ". names pd address dates measurements";
+.frontContainer { grid-template-areas: ". names pd address dates measurements";
   grid-template-rows: auto; }
 
 .measuresContainer {  grid-template-rows: repeat(6, auto);
