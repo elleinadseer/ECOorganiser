@@ -99,7 +99,26 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fillSmartPack(form, data) {
         // Fill fields specific to 'Other Sheet'
         setTextIfFieldExists(form, 'Customer Name', data.names);
-        // Add more fields as needed...
+        setTextIfFieldExists(form, 'Customer Phone', data.phoneNum);
+        setTextIfFieldExists(form, 'Customer Address', data.propAddress);
+
+        setTextIfFieldExists(form, 'Landlord', data.landlord);
+
+        setTextIfFieldExists(form, 'Survey Date', data.surveyDate);
+        setTextIfFieldExists(form, 'Survey Lodgement Date', data.submissionDate);
+
+        setTextIfFieldExists(form, 'Total Floor Area m2', data.TFL);
+        setTextIfFieldExists(form, 'SAP Rating', data.SAPrating);
+
+        //setTextIfFieldExists(form, 'PAS Measure 1', data.m1);
+        //setTextIfFieldExists(form, 'PAS Measure 1 Installer', data.m1installer);
+
+        setTextIfFieldExists(form, 'Handover Date', data.installDate);
+
+        /* Add more fields as needed...
+        setTextIfFieldExists(form, 'TENANCY', data.tenancy);
+        setTextIfFieldExists(form, 'RETROFIT ASSESSOR', "Harley Thorne");
+        */
     }
 
     // General function to load and fill a PDF

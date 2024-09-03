@@ -3,43 +3,52 @@ Customer Phone
 Customer Address
 Customer Postcode
 
+CHECKBOXES:
 HTHG Job
 DWP Data Matched
 Benefit Letter Job
 LA Flex Job
+
 DWP URN
 
 DataMatchDate
 
+CHECKBOXES:
 Utility bill
 Mortgage Statement
 NHS Letter
 Other bill used
 Occupancy Evidence
 
-Tenure type: Private Tenant 
+Tenure type (CHECKBOXES): 
+Private Tenant 
 Owner occupied
 Social Housing Tenant
 
 Landlord 
 
-Scheme: Regular ECO4
+Scheme (CHECKBOXES): 
+Regular ECO4
 GBIS
 
 Survey Date
 Survey Lodgement Date
 
-Dwelling type: Flat
+Dwelling type (CHECKBOXES): 
+Flat
 House 
 Park Home
 
-Floor area categories: 0-72
+Floor area categories (CHECKBOXES): 
+0-72
 73-97
 98-199
 200+
-Total Floor Area m2#0
 
-SAP categories: Low G
+Total Floor Area m2
+
+SAP categories (CHECKBOXES): 
+Low G
 High G
 Low F
 High F
@@ -51,26 +60,27 @@ Low C
 High C
 Low B
 High B
-SAP Rating#0
-TI STARTBAND#0
 
-RA Name#0
+SAP Rating
+TI STARTBAND
+
+RA Name
 EPC reference number
 
-Tenure type: Private Tenant
+Tenure type (CHECKBOXES): 
+Private Tenant
 Owner Occupied
 Social Housing Tenant
 
 Wall Age    (dropdown)
 
+CHECKBOXES:
 Existing Heating Controls
 No Existing Heating Controls
-
 Existing Programmer
 Existing Room Thermostat
 Existing TRV
 Existing Smart Thermostat
-
 Property On Gas
 Property Off Gas
 

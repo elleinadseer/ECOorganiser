@@ -41,7 +41,10 @@ export function handlePdfExtraction() {
                         property_type: extractData(/Property Type\s+(.+?)\s+Total Floor Area/, text),
                         wall_type: extractData(/Wall Type:\s+[A-Z]{2}\s*(.+?)\s+Wall Insulation/, text),
                         roof_type: extractData(/Roof Type:\s+\w+\s+(\w+)/, text),
+                        ex_wall_type: extractData(/1st Extension[\s\S]+?Wall Type:\s+[A-Z]{2}\s+([A-Za-z\s]+?)\s+Wall Insulation/, text),
+                        ex_roof_type: extractData(/1st Extension[\s\S]+?Roof Type:\s+\w+\s+([A-Za-z]+)/, text)
                     };
+
 
                     console.log("Extracted Data:", extractedData);
 
@@ -90,24 +93,83 @@ export function handlePdfExtraction() {
                             console.error('Error retrieving data from Google Sheets:', error);
                         });
 
-                        var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
-                        if (match) {
-                            var floorArea = match[1];
-                            var roomHeight = match[2];
-                            var wallPerimeter = match[3];
+                        // Match the Main building part for Lowest floor and First floor
+                        var mainMatchLowest = text.match(/Main[\s\S]+?Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+                        var mainMatchFirst = text.match(/Main[\s\S]+?First floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
 
-                            console.log('Extracted values:', {
-                                floorArea: floorArea,
-                                roomHeight: roomHeight,
-                                wallPerimeter: wallPerimeter
+                        // Process the matches for the Main building
+                        if (mainMatchLowest) {
+                            var mainFloorArea = mainMatchLowest[1];
+                            var mainRoomHeight = mainMatchLowest[2];
+                            var mainWallPerimeter = mainMatchLowest[3];
+
+                            console.log('Extracted values for Main - Lowest floor:', {
+                                floorArea: mainFloorArea,
+                                roomHeight: mainRoomHeight,
+                                wallPerimeter: mainWallPerimeter
                             });
 
-                            document.getElementById('floorArea').value = floorArea || "";
-                            document.getElementById('roomHeight').value = roomHeight || "";
-                            document.getElementById('wallPerimeter').value = wallPerimeter || "";
+                            document.getElementById('floorArea').value = mainFloorArea || "";
+                            document.getElementById('roomHeight').value = mainRoomHeight || "";
+                            document.getElementById('wallPerimeter').value = mainWallPerimeter || "";
+                        }
+
+                        if (mainMatchFirst) {
+                            var mainFloorArea2 = mainMatchFirst[1];
+                            var mainRoomHeight2 = mainMatchFirst[2];
+                            var mainWallPerimeter2 = mainMatchFirst[3];
+                        
+                            console.log('Extracted values for Main - First floor:', {
+                                floorArea: mainFloorArea2,
+                                roomHeight: mainRoomHeight2,
+                                wallPerimeter: mainWallPerimeter2
+                            });
+                        
+                            document.getElementById('floorArea2').value = mainFloorArea2 || "";
+                            document.getElementById('roomHeight2').value = mainRoomHeight2 || "";
+                            document.getElementById('wallPerimeter2').value = mainWallPerimeter2 || "";
                         } else {
                             console.log('No match found in the text.');
                         }
+
+                        // Match the 1st Extension building part for Lowest floor and First floor
+                        var extensionMatchLowest = text.match(/1st Extension[\s\S]+?Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+                        var extensionMatchFirst = text.match(/1st Extension[\s\S]+?First floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+
+                        // Process the matches for the 1st Extension building
+                        if (extensionMatchLowest) {
+                            var exFloorArea = extensionMatchLowest[1];
+                            var exRoomHeight = extensionMatchLowest[2];
+                            var exWallPerimeter = extensionMatchLowest[3];
+
+                            console.log('Extracted values for 1st Extension - Lowest floor:', {
+                                floorArea: exFloorArea,
+                                roomHeight: exRoomHeight,
+                                wallPerimeter: exWallPerimeter
+                            });
+
+                            document.getElementById('EX-floorArea').value = exFloorArea || "";
+                            document.getElementById('EX-roomHeight').value = exRoomHeight || "";
+                            document.getElementById('EX-wallPerimeter').value = exWallPerimeter || "";
+                        }
+
+                        if (extensionMatchFirst) {
+                            var exFloorArea2 = extensionMatchFirst[1];
+                            var exRoomHeight2 = extensionMatchFirst[2];
+                            var exWallPerimeter2 = extensionMatchFirst[3];
+
+                            console.log('Extracted values for 1st Extension - First floor:', {
+                                floorArea: exFloorArea2,
+                                roomHeight: exRoomHeight2,
+                                wallPerimeter: exWallPerimeter2
+                            });
+
+                            document.getElementById('EX-floorArea2').value = exFloorArea2 || "";
+                            document.getElementById('EX-roomHeight2').value = exRoomHeight2 || "";
+                            document.getElementById('EX-wallPerimeter2').value = exWallPerimeter2 || "";
+                        }
+
+
                     }
 
                     document.getElementById('surveyDate').value = extractedData.assessment_date || "";
@@ -118,6 +180,11 @@ export function handlePdfExtraction() {
 
                     selectDropdownOption('#roofType', extractedData.roof_type);
                     selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
+
+                    // Select the dropdown options for the 1st Extension building part
+                    selectDropdownOption('#EX-roofType', extractedData.ex_roof_type);
+                    selectDropdownOption('#EX-wallConstructSelect', extractedData.ex_wall_type);
+
                     selectDropdownOption('#propertyType', extractedData.property_type);
                     selectDropdownOption('#YOpropSelect', extractedData.construction_year);
                     selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
