@@ -79,7 +79,7 @@
 
 #mainProp {grid-area: mainProp}
 #wallConstruct {grid-area: wallType}
-#roomHeightNum {grid-area: roomHeight}
+#roomHeightNums {grid-area: roomHeight}
 #wallPerim {grid-area: wallPerim}
 #roofTypes {grid-area: roofTypes}
 #floorAreaDiv {grid-area: floorArea}
@@ -98,6 +98,11 @@
 
 #tel, #landlord {width: 124px;}
 #postcode {width: 80px;}
+
+.propContainer input { width: 90px;
+margin-top: 8px; 
+margin: 0px;
+}
 
 .addOn {
   border: 1px grey solid;
