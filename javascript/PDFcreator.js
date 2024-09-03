@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // General function to load and fill a PDF
     async function fillPdfForm(pdfFileName, fillPdfFunction) {
         const data = gatherFormData(); // Gather the data once
-        const existingPdfBytes = await fetch(`./${pdfFileName}.pdf`).then(res => res.arrayBuffer());
+        const existingPdfBytes = await fetch(`./blanks/${pdfFileName}.pdf`).then(res => res.arrayBuffer());
         const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
         const form = pdfDoc.getForm();
 

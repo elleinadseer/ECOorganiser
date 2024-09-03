@@ -1,0 +1,37 @@
+EERF: 
+
+name of occupier / landlord 
+ECO4 scheme checkboxes
+GBIS scheme checkboxes 
+Council Tax Band checkboxes
+Tenure type checkboxes 
+
+Verification method: DWP Match / LA declaration / HTHG benefit letter 
+
+URN 
+Occupancy evidence checkbox (utility bill etc) / other
+
+gov scheme: Yes / no checkbox 
+list scheme text box 
+
+
+PIPS: 
+Survey Date
+Retrofit coord name: (Jade / Seema)
+^ company name
+^ Tel
+^ Email
+
+Name of occupier
+Property type checkboxes 
+tenure type checkbox
+total floor area 
+starting SAP rating
+EPC ref (EPR?)
+smart meter advice measure 
+Measure checkbox 
+Wall Age
+Wall type
+Wall type % 
+Not claiming failed cavity
+Party walls not insulated 
