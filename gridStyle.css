@@ -50,6 +50,7 @@
   background-color: lightgrey;
   border: 20px lightgrey solid;
   border-radius: 20px;
+  gap: 20px;
 }
 
 #personalDetails, #dates {background-color: #eeeeee}
@@ -100,8 +101,12 @@
 #postcode {width: 80px;}
 
 .propContainer input { width: 90px;
-margin-top: 8px; 
 margin: 0px;
+margin-top: 8px; 
+}
+
+.leftSpace {
+  padding-left: 30px;
 }
 
 .addOn {

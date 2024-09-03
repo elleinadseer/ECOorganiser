@@ -373,7 +373,7 @@
     </section>
 
     <section class="propContainer gridFormat">
-        <label id="mainProp">Main Property</label>
+        <label id="mainProp" class="spaceAbove">Main Property</label>
 
         <div id="wallConstruct">
             <label for="wallConstruction">Wall Construction</label>
@@ -389,8 +389,11 @@
         </div>
         
         <div id="roomHeightNums">
-            <label for="roomHeight">Room Height</label>
+            <label for="roomHeight" class="leftSpace">Room Height</label>
+            <br>
+            <label for="roomHeight">1st</label>
             <input type="number" id="roomHeight">
+            <label for="roomHeight2">2nd</label>
             <input type="number" id="roomHeight2">
         </div>
             
@@ -416,12 +419,8 @@
             <input type="number" id="floorArea">
             <input type="number" id="floorArea2">
         </div>
-    </section>
 
-     <div id="extensionAdd" class="addOn"> Add an extension </div>
-
-
-        <label id="EX-prop">Extension 1</label>
+        <label id="EX-prop" class="EXspaceAbove">Extension 1</label>
 
         <div id="EX-wallConstruct">
             <label for="EX-wallConstruction">Wall Construction</label>
@@ -437,13 +436,11 @@
         </div>
         
         <div id="EX-roomHeightNums">
-            <div class="sideLabels">
-                <div>1st Floor</div>
-                <div>2nd Floor</div>
-            </div>
+            <label for="EX-roomHeight" class="leftSpace">Room Height</label>
 
-            <label for="EX-roomHeight">Room Heijklklkjlklklght</label>
+            <label for="roomHeight">1st</label>
             <input type="number" id="EX-roomHeight">
+            <label for="roomHeight2">2nd</label>
             <input type="number" id="EX-roomHeight2">
         </div>
             
@@ -456,6 +453,7 @@
         <div id="EX-roofTypes">
             <label for="EX-roofType">Roof Type</label>
             <select id="EX-roofType">
+                <option></option>
                 <option id="flat">Flat</option>
                 <option id="pitched">Pitched</option>
                 <option id="RIR">RIR</option>
@@ -468,6 +466,11 @@
             <input type="number" id="EX-floorArea">
             <input type="number" id="EX-floorArea2">
         </div>
+    </section>
+
+
+
+     <div id="extensionAdd" class="addOn"> Add an extension </div>
     </section>
 
 <!-- END OF FORM -->

@@ -18,7 +18,7 @@
 { display: none; }
 
 [id^="EX-"] {
-    display: none;
+    /* display: none; */    
 }
 
 [id$="material"] {
@@ -32,3 +32,16 @@
 img {width: 80px;}
 
 input {width: 100%;}
+
+.EXspaceAbove {    
+    border-top: 1px grey solid;
+    width: 851px;
+    margin: -10px 0px;
+    padding-top: 40px;
+    padding-left: 15px;
+  }
+
+.spaceAbove {
+    padding-top: 25px;
+    padding-left: 15px; 
+}
