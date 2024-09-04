@@ -9,6 +9,7 @@
 
          <title> ECO Organiser </title>
 
+         <script src="https://cdn.jsdelivr.net/npm/xmlbuilder2@latest/dist/xmlbuilder2.min.js"></script>
          <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
       </head>
@@ -69,11 +70,11 @@
 
         <div id="dates">
             <label for="surveyDate">Survey Date</label>
-            <input type="text" id="surveyDate">
+            <input type="text" id="surveyDate" placeholder="dd/mm/yyyy">
             <label for="submissionDate">Submission Date</label>
-            <input type="text" id="submissionDate">
+            <input type="text" id="submissionDate" placeholder="dd/mm/yyyy">
             <label for="installDate">Install Date</label>
-            <input type="text" id="installDateInput">
+            <input type="text" id="installDateInput" placeholder="dd/mm/yyyy">
         </div>
 
         <div id="measurements">
@@ -482,6 +483,8 @@
     <script src="javascript/appearenceChanges.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
+    <script src="javascript/XFDFcreator.js"></script>
     
     <!-- <script src="https://unpkg.com/pdf-lib"></script> -->
 

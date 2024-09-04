@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const frontSheetRequestor = document.getElementById('frontSheetRequestor');
     const smartPackRequestor = document.getElementById('smartPackRequestor'); // Assuming another button or trigger for the other PDF
+    
 
     // Utility function to safely set text if the field exists
     function setTextIfFieldExists(form, fieldName, value) {
@@ -95,32 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to fill another PDF (for example 'Other Sheet')
-    async function fillSmartPack(form, data) {
-        // Fill fields specific to 'Other Sheet'
-        setTextIfFieldExists(form, 'Customer Name', data.names);
-        setTextIfFieldExists(form, 'Customer Phone', data.phoneNum);
-        setTextIfFieldExists(form, 'Customer Address', data.propAddress);
-
-        setTextIfFieldExists(form, 'Landlord', data.landlord);
-
-        setTextIfFieldExists(form, 'Survey Date', data.surveyDate);
-        setTextIfFieldExists(form, 'Survey Lodgement Date', data.submissionDate);
-
-        setTextIfFieldExists(form, 'Total Floor Area m2', data.TFL);
-        setTextIfFieldExists(form, 'SAP Rating', data.SAPrating);
-
-        //setTextIfFieldExists(form, 'PAS Measure 1', data.m1);
-        //setTextIfFieldExists(form, 'PAS Measure 1 Installer', data.m1installer);
-
-        setTextIfFieldExists(form, 'Handover Date', data.installDate);
-
-        /* Add more fields as needed...
-        setTextIfFieldExists(form, 'TENANCY', data.tenancy);
-        setTextIfFieldExists(form, 'RETROFIT ASSESSOR', "Harley Thorne");
-        */
-    }
-
     // General function to load and fill a PDF
     async function fillPdfForm(pdfFileName, fillPdfFunction) {
         const data = gatherFormData(); // Gather the data once
@@ -147,7 +122,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Attach the event listener to the div for 'Blank Front Sheet'
     frontSheetRequestor.addEventListener('click', () => fillPdfForm('BlankFrontSheet', fillBlankFrontSheetPdf));
-
-    // Attach another event listener for a different PDF, if needed
-    smartPackRequestor.addEventListener('click', () => fillPdfForm('BlankSmartPack', fillSmartPack));
 });
