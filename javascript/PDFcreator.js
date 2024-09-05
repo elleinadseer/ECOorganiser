@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const frontSheetRequestor = document.getElementById('frontSheetRequestor');
-    const smartPackRequestor = document.getElementById('smartPackRequestor'); // Assuming another button or trigger for the other PDF
-    
 
     // Utility function to safely set text if the field exists
     function setTextIfFieldExists(form, fieldName, value) {
