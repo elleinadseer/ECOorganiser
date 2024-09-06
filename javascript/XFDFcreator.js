@@ -45,15 +45,15 @@ function populateFormData() {
         "EPC reference number": document.getElementById('rdsapNum').value.trim(),
         "Wall Age": document.getElementById('YOpropSelect').value.trim(),
         "PAS Measure 1": document.getElementById('m1measureList').value.trim(),
-        "PAS Measure 1 Material Dropdown": document.getElementById('m1material').value.trim(),
+        //"PAS Measure 1 Material Dropdown": document.getElementById('m1material').value.trim(),
         "PAS Measure 1 Material Text": document.getElementById('m1material').value.trim(),
         "PAS Measure 1 Install Company": document.getElementById('m1installerCompany').value.trim(),
         "PAS Measure 1 Installer": document.getElementById('m1installerName').value.trim(),
         "PAS Measure 1 Cert": document.getElementById('m1PAScertNum').value.trim(),
         // "PAS Measure 1 Cert Checkbox": document.getElementById('m1PAScertNum').checked
 
-        "Main Present": document.getElementById('mainProp').checked,
-        "Main Wall Construction": document.getElementById('wallConstructSelect').value.trim(),
+
+        "Main Wall Construction": "On",  // Always checked in XFDF form
         "Main Room Height 1": document.getElementById('roomHeight').value.trim(),
         "Main Room Height 2": document.getElementById('roomHeight2').value.trim(),
         "Main Wall Perimeter 1": document.getElementById('wallPerimeter').value.trim(),
