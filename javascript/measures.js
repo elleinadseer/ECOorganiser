@@ -15,20 +15,20 @@ const GASEinstallers = [
 // Data structure for measures
 const measureData = {
     LI: {
-        company:"Energy Saving Group",
+        company:"Energy Saving Group LTD",
         installers: [ "Simon King", "Steven Brindle" ],
         materialUsed: [ "Knauf Earthwool Loftroll 44 BS EN 13501-1", 
             "Isover Spacesaver Loftroll" ],
         PAScert: "OCEI34330"
     },
     CWI: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: ["Steven Forbes"],
         materialUsed: "Provincial Seals Superwhite 40",
         PAScert: "OCEI34330"
     },
     ESH: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: ["Karim Bouariche"],
         materialUsed: "Elnur Ecombi HHR40",
         PAScert: "OCEI34330"
@@ -43,61 +43,61 @@ const measureData = {
         PAScert: ""
     },
     FRI: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: ["Saja Colley"],
         materialUsed: "Firestone RubberGard EPDM",
         PAScert: "OCEI34330"
     },
     FTCH: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: GASEinstallers,
         materialUsed: "Provide",
         PAScert: "OCEI34330"
     },
     GB: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: GASEinstallers,
         materialUsed: "Provide",
         PAScert: "OCEI34330"
     },
     GBU: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: GASEinstallers,
         materialUsed: "Provide",
         PAScert: "OCEI34330"
     },
     HC: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: GASEinstallers,
         materialUsed: "Provide",
         PAScert: "OCEI34330"
     },
     LC: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: GASEinstallers,
         materialUsed: "Provide",
         PAScert: "OCEI34330"
     },
     PRT: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: GASEinstallers,
         materialUsed: ["RADBOT 1 SCV100 ErP Class VIII"],
         PAScert: "OCEI34330"
     },
     ST: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: GASEinstallers,
         materialUsed: ["Provide"],
         PAScert: "OCEI34330"
     },
     TRV: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: GASEinstallers,
         materialUsed: ["Provide"],
         PAScert: "OCEI34330"
     },
     IWI: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: [ "Abdelhadi Rakan Al Wadi",
             "Abed Alsalam",
             "Alex Martin",
@@ -112,13 +112,13 @@ const measureData = {
         PAScert: "OCEI34330"
     },
     FRI: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: ["Simon King", "Steven Brindle"],
         materialUsed: ["Knauf Earthwool Loftroll 44 BS EN 13501-1", "Isover Spacesaver Loftroll"],
         PAScert: "OCEI34330"
     },
     RIRI: {
-        company: "Energy Saving Group",
+        company: "Energy Saving Group LTD",
         installers: [ "Abdelhadi Rakan Al Wadi",
             "Abed Alsalam",
             "Danny Rossie",
@@ -178,20 +178,27 @@ export function populateInstallerInfo(measure, measureIndex) {
             }
         }
 
-        // Get the existing dropdown for materials
+        // Get the existing dropdown for materials used
         const materialSelect = document.getElementById(`m${measureIndex}material`);
+        console.log(materialSelect); // Check if this returns the correct element
         
         if (materialSelect) {
             materialSelect.innerHTML = ""; // Clear previous options
-
-            // Create an option for the material used
-            const option = document.createElement("option");
-            option.value = data.materialUsed;
-            option.text = data.materialUsed;
-            materialSelect.appendChild(option);
-
-            // Optionally, select the material if there's only one
-            materialSelect.selectedIndex = 0;
+            console.log(data.materialUsed); // Check if data.materialUsed is correct
+        
+            data.materialUsed.forEach(material => {
+                const option = document.createElement("option");
+                option.value = material;
+                option.text = material;
+                materialSelect.appendChild(option);
+            });
+        
+            // Optionally, select the first material if there's only one
+            if (data.materialUsed.length === 1) {
+                materialSelect.selectedIndex = 0;
+            }
+        } else {
+            console.error("Element not found or incorrect ID");
         }
     }
 }

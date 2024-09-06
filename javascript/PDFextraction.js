@@ -178,6 +178,10 @@ export function handlePdfExtraction() {
                     document.getElementById('SAPrating').value = extractedData.current_efficiency_rating || "";
                     document.getElementById('rdsapNum').value = extractedData.reference_number || "";
 
+                    selectDropdownOption('#propertyType', extractedData.property_type);
+                    selectDropdownOption('#YOpropSelect', extractedData.construction_year);
+                    selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
+
                     selectDropdownOption('#roofType', extractedData.roof_type);
                     selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
 
@@ -185,9 +189,7 @@ export function handlePdfExtraction() {
                     selectDropdownOption('#EX-roofType', extractedData.ex_roof_type);
                     selectDropdownOption('#EX-wallConstructSelect', extractedData.ex_wall_type);
 
-                    selectDropdownOption('#propertyType', extractedData.property_type);
-                    selectDropdownOption('#YOpropSelect', extractedData.construction_year);
-                    selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
+
                 });
             });
         };

@@ -1,17 +1,11 @@
 document.getElementById('tenancySelect').addEventListener('change', function() {
-    const landlordDiv = document.getElementById('landlordDiv');
-    landlordDiv.style.display = this.value === 'privateTenant' ? 'block' : 'none';
-});
-
-
-/* document.getElementById('tenancySelect').addEventListener('change', function() {
     var landlordDiv = document.getElementById('landlordDiv');
     if (this.value === 'Private Tenant') {
         landlordDiv.style.display = 'block'; // Show landlordDiv
     } else {
         landlordDiv.style.display = 'none';  // Hide landlordDiv
     }
-}); */
+});
 
 export function showMeasureRow(measureIndex) {
     // Define the IDs of the elements to show

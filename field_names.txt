@@ -218,7 +218,7 @@ Assessor ID no
 Ventilation Date#0
 Trust Mark Project Number
 
-Main Present
+Main Present (checkbox)
 Main Wall Construction
 Main Alt Wall Construction
 Main Room Height 1
