@@ -53,7 +53,7 @@ function populateFormData() {
         // "PAS Measure 1 Cert Checkbox": document.getElementById('m1PAScertNum').checked
 
 
-        "Main Wall Construction": "On",  // Always checked in XFDF form
+        //"Main Present": "On",  // Always checked in XFDF form
         "Main Room Height 1": document.getElementById('roomHeight').value.trim(),
         "Main Room Height 2": document.getElementById('roomHeight2').value.trim(),
         "Main Wall Perimeter 1": document.getElementById('wallPerimeter').value.trim(),
