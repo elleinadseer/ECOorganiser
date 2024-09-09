@@ -40,6 +40,7 @@ function populateFormData() {
         "EPC reference number": document.getElementById('rdsapNum').value.trim(),
         "Wall Age": document.getElementById('YOpropSelect').value.trim(),
 
+        "Main Present": "Yes",
         "PAS Measure 1": document.getElementById('m1measureList').value.trim(),
         "PAS Measure 1 Material Text": document.getElementById('m1material').value.trim(),
         "PAS Measure 1 Install Company": document.getElementById('m1installerCompany').value.trim(),
@@ -135,3 +136,35 @@ function escapeXML(str) {
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&apos;');
 }
+
+
+/* 
+function ToggleSectionDimensions(section, on=false)
+{
+    fields = [
+        this.getField(section + " Wall Construction"), 
+        this.getField(section + " Alt Wall Construction"), 
+        this.getField(section + " Room Height 1"), 
+        this.getField(section + " Room Height 2"), 
+        this.getField(section + " Room Height 3"), 
+        this.getField(section + " Room Height 4"), 
+        this.getField(section + " Wall Perimeter 1"), 
+        this.getField(section + " Wall Perimeter 2"), 
+        this.getField(section + " Wall Perimeter 3"), 
+        this.getField(section + " Wall Perimeter 4"), 
+        this.getField(section + " Alt Wall Area"), 
+        this.getField(section + " Insulation Area Installed"), 
+        this.getField(section + " Alt Insulation Area Installed"), 
+        this.getField(section + " Roof Type"), 
+        this.getField(section + " Roof Area"), 
+        this.getField(section + " Roof Insulation Area Installed"), 
+        this.getField(section + " Roof Insulation Type")
+    ];
+    
+    for (var i = 0; i < fields.length; i++)
+    {
+        fields[i].display = on ? display.visible : display.hidden;
+        fields[i].readonly = !on;
+    }
+} 
+    */
