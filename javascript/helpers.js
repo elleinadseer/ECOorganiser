@@ -31,4 +31,9 @@ export function selectDropdownOption(dropdownSelector, extractedValue) {
     if (!found) {
         console.error('Option not found in dropdown:', trimmedValue);
     }
+
+    // Dispatch the change event manually
+    var event = new Event('change', { bubbles: true });
+    selectElement.dispatchEvent(event);
 }
+

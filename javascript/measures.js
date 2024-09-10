@@ -24,13 +24,13 @@ const measureData = {
     CWI: {
         company: "Energy Saving Group LTD",
         installers: ["Steven Forbes"],
-        materialUsed: "Provincial Seals Superwhite 40",
+        materialUsed: ["Provincial Seals Superwhite 40"],
         PAScert: "OCEI34330"
     },
     ESH: {
         company: "Energy Saving Group LTD",
         installers: ["Karim Bouariche"],
-        materialUsed: "Elnur Ecombi HHR40",
+        materialUsed: ["Elnur Ecombi HHR40"],
         PAScert: "OCEI34330"
     },
     EWI: {
@@ -39,43 +39,43 @@ const measureData = {
             "Faisal Rehman",
             "Marcin Persjanow",
             "Shakeel Sibtain"],
-        materialUsed: "EWI Pro EWI System 18/5503",
+        materialUsed: ["EWI Pro EWI System 18/5503"],
         PAScert: ""
     },
     FRI: {
         company: "Energy Saving Group LTD",
         installers: ["Saja Colley"],
-        materialUsed: "Firestone RubberGard EPDM",
+        materialUsed: ["Firestone RubberGard EPDM"],
         PAScert: "OCEI34330"
     },
     FTCH: {
         company: "Energy Saving Group LTD",
         installers: GASEinstallers,
-        materialUsed: "Provide",
+        materialUsed: ["Provide"],
         PAScert: "OCEI34330"
     },
     GB: {
         company: "Energy Saving Group LTD",
         installers: GASEinstallers,
-        materialUsed: "Provide",
+        materialUsed: ["Provide"],
         PAScert: "OCEI34330"
     },
     GBU: {
         company: "Energy Saving Group LTD",
         installers: GASEinstallers,
-        materialUsed: "Provide",
+        materialUsed: ["Provide"],
         PAScert: "OCEI34330"
     },
     HC: {
         company: "Energy Saving Group LTD",
         installers: GASEinstallers,
-        materialUsed: "Provide",
+        materialUsed: ["Provide"],
         PAScert: "OCEI34330"
     },
     LC: {
         company: "Energy Saving Group LTD",
         installers: GASEinstallers,
-        materialUsed: "Provide",
+        materialUsed: ["Provide"],
         PAScert: "OCEI34330"
     },
     PRT: {
@@ -119,10 +119,10 @@ const measureData = {
     },
     RIRI: {
         company: "Energy Saving Group LTD",
-        installers: [ "Abdelhadi Rakan Al Wadi",
+        installers: [ "Hardeep Khosla",
+            "Abdelhadi Rakan Al Wadi",
             "Abed Alsalam",
             "Danny Rossie",
-            "Hardeep Khosla",
             "Ismaal Al Zaouki",
             "Josef Saadah",
             "Mahmood Jamil Ezaaoki",
@@ -138,14 +138,14 @@ const measureData = {
         installers: [  "Christopher Bealing",
             "Lewis Wothers",
             "Paul Baker"],
-        materialUsed: "Provide",
+        materialUsed: ["Provide"],
         PAScert: ""
     },
     ASHP: {
         company: "Next Generation Utilities",
         installers: [  "Ryan Stokes",
         "Daniel Chadwick" ],
-        materialUsed: "Jinko Cheetah HC 72M-V 390-410W",
+        materialUsed: ["Jinko Cheetah HC 72M-V 390-410W"],
         PAScert: "99505609" // This is NOT a PAScert, it falls under 'Certificate Number' - doesn't need to be fixed but be careful
     }
 };

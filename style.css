@@ -10,6 +10,9 @@
     mediumseagreen (Label colour)
 */
 
+#evidence, #propType, #YOprop, #rdsap
+{height: 55px} /* need to make tax band inline into it's own row seperate from grid to overcome this BS code*/
+
 #landlordDiv, 
 #flexDisplay, #taxBandDisplay,
 #m2measureListDiv, #m2materialsDD, #m2installerComps, #m2installerNameList, #m2PAScert, #m2POPTs, 

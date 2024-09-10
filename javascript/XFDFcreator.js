@@ -26,13 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
 // Get the value of the URN field and trim it
 function populateFormData() {
     var URNvalue = document.getElementById('URN').value.trim();
+    var flexValue = document.getElementById('flexNum').value.trim();
+
+    var schemeSelectValue = document.getElementById('schemeSelect').value.trim();
+
     // Check if URN has a value and isn't blank
     var dwpDataMatched = URNvalue !== "" ? "Yes" : "No";
-
-    var flexValue = document.getElementById('flexNum').value.trim();
     var flexMatched = flexValue !== "" ? "Yes" : "No";
-
     var dwpURNvalue = flexValue !== "" ? flexValue : URNvalue;
+
+    var gbisValue = (schemeSelectValue === "GBIS" || schemeSelectValue === "General Eligibility") ? "GBIS" : "";
 
     // Check which tax band is selected
     function getSelectedTaxBand() {
@@ -61,7 +64,8 @@ function populateFormData() {
         "LA Flex Job": flexMatched,
         "Tenure type": document.getElementById('tenancySelect').value.trim(),
         "Landlord": document.getElementById('landlord').value.trim(),
-        "Scheme": document.getElementById('schemeSelect').value.trim(),
+
+        "Scheme": gbisValue,
         "Survey Date": document.getElementById('surveyDate').value.trim(),
         "Survey Lodgement Date": document.getElementById('submissionDate').value.trim(),
         "Dwelling type": document.getElementById('propertyType').value.trim(),
@@ -128,7 +132,6 @@ function populateFormData() {
     } else {
         formData["Dwelling type"] = ""; // Default value if none matches
     }
-    
     
     return formData;
 }
