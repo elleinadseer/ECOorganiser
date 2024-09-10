@@ -54,7 +54,9 @@ function populateFormData() {
 
     const formData = {
         [`Council Tax Band ${selectedTaxBand}`]: "Yes", // Dynamically set the property name
-        "General Eligibility Job": tbPresent, // Set based on tax band selection
+        "General Eligibiility Job": tbPresent, // Set based on tax band selection
+        // ^ CHANGE ABOVE BACK TO CORRECT SPELLING ONCE YOU'VE SENT THE FORM TO DAVID
+
 
         "Customer Name": `${document.getElementById('fName').value.trim()} ${document.getElementById('mName').value.trim()} ${document.getElementById('sName').value.trim()}`,
         "Customer Phone": document.getElementById('tel').value.trim(),
@@ -98,6 +100,8 @@ function populateFormData() {
         "Extension 1 Roof Type": document.getElementById('EX-roofType').value.trim(),
         "Extension 1 Roof Area": document.getElementById('EX-floorArea').value.trim(),
         "Extension 1 Roof Area 2": document.getElementById('EX-floorArea2').value.trim(),
+
+        "Handover Date": document.getElementById('installDateInput').value.trim()
     };
 
     // Get the selected value from the "Occupancy Evidence" dropdown
