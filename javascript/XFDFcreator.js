@@ -81,6 +81,7 @@ function populateFormData() {
         "PAS Measure 1 Cert": document.getElementById('m1PAScertNum').value.trim(),
 
         "Main Present": "Yes",
+        "Main Wall Construction": document.getElementById('wallConstructSelect').value.trim(),
         "Main Room Height 1": document.getElementById('roomHeight').value.trim(),
         "Main Room Height 2": document.getElementById('roomHeight2').value.trim(),
         "Main Wall Perimeter 1": document.getElementById('wallPerimeter').value.trim(),
