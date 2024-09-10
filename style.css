@@ -11,6 +11,7 @@
 */
 
 #landlordDiv, 
+#flexDisplay, #taxBandDisplay,
 #m2measureListDiv, #m2materialsDD, #m2installerComps, #m2installerNameList, #m2PAScert, #m2POPTs, 
 #m3measureListDiv, #m3materialsDD, #m3installerComps, #m3installerNameList, #m3PAScert, #m3POPTs, 
 #m4measureListDiv, #m4materialsDD, #m4installerComps, #m4installerNameList, #m4PAScert, #m4POPTs, 
@@ -44,4 +45,57 @@ input {width: 100%;}
 .spaceAbove {
     padding-top: 25px;
     padding-left: 15px; 
+}
+
+
+.propContainer input { width: 90px;
+    margin: 0px;
+    margin-top: 8px; 
+}
+
+.leftSpace {
+    padding-left: 30px;
+}
+
+.addOn {
+    border: 1px grey solid;
+    border-radius: 0px 0px 10px 10px;
+    border-top: none;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+label, .addOn {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: arial;
+}
+
+input, select {
+    box-sizing: border-box;
+    margin: 8px 0px;
+    padding: 3px;
+    border: 1px grey solid;}
+
+#measureAdd, #extensionAdd {
+    display: flex;
+    justify-content: center;
+}
+
+.inline /*Tax Band*/ {display: flex;
+    flex-direction: row;}
+
+.inline label  {padding-top: 14px;
+    padding-left: 5px;
+}
+
+.inline input {margin-left: 79px;}
+
+#taxBandDisplay {
+    background-color: ghostwhite;
+    border: 10px ghostwhite solid;
+    border-radius: 10px;
+    width: 880px;
 }

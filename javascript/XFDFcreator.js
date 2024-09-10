@@ -23,12 +23,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Get the value of the URN field and trim it
 function populateFormData() {
+    var URNvalue = document.getElementById('URN').value.trim();
+    // Check if URN has a value and isn't blank
+    var dwpDataMatched = URNvalue !== "" ? "Yes" : "No";
+
+    var flexValue = document.getElementById('flexNum').value.trim();
+    var flexMatched = flexValue !== "" ? "Yes" : "No";
+
+    var dwpURNvalue = flexValue !== "" ? flexValue : URNvalue;
+
+    // Check which tax band is selected
+    function getSelectedTaxBand() {
+        if (document.getElementById('tbA').checked) return 'A';
+        if (document.getElementById('tbB').checked) return 'B';
+        if (document.getElementById('tbC').checked) return 'C';
+        if (document.getElementById('tbD').checked) return 'D';
+        if (document.getElementById('tbE').checked) return 'E';
+        if (document.getElementById('tbF').checked) return 'F';
+        if (document.getElementById('tbG').checked) return 'G';
+        if (document.getElementById('tbH').checked) return 'H';
+        return ''; // No tax band selected
+    }
+    const selectedTaxBand = getSelectedTaxBand();
+    const tbPresent = selectedTaxBand ? "Yes" : "No"; // Set to "Yes" if any tax band is selected
+
     const formData = {
+        [`Council Tax Band ${selectedTaxBand}`]: "Yes", // Dynamically set the property name
+        "General Eligibility Job": tbPresent, // Set based on tax band selection
+
         "Customer Name": `${document.getElementById('fName').value.trim()} ${document.getElementById('mName').value.trim()} ${document.getElementById('sName').value.trim()}`,
         "Customer Phone": document.getElementById('tel').value.trim(),
         "Customer Address": `${document.getElementById('street').value.trim()}, ${document.getElementById('town').value.trim()}, ${document.getElementById('postcode').value.trim()}`,
-        "DWP URN": document.getElementById('URN').value.trim(),
+        "DWP URN": dwpURNvalue, // Use the combined URN or Flex value
+        "DWP Data Matched": dwpDataMatched,      
+        "LA Flex Job": flexMatched,
         "Tenure type": document.getElementById('tenancySelect').value.trim(),
         "Landlord": document.getElementById('landlord').value.trim(),
         "Scheme": document.getElementById('schemeSelect').value.trim(),
@@ -103,10 +133,7 @@ function populateFormData() {
     return formData;
 }
 
-
-
 console.log(formData);
-
 
 function createXFDF(formData) {
     let xfdfContent = '<?xml version="1.0" encoding="UTF-8"?>\n';

@@ -1,3 +1,27 @@
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('schemeSelect').addEventListener('change', function() {
+
+        var URNbox = document.getElementById('URNdisplay');
+        var flexBox = document.getElementById('flexDisplay');
+        var taxBandDisplay = document.getElementById('taxBandDisplay'); // Assuming this element exists
+
+        if (this.value === 'Flex') {
+            URNbox.style.display = 'none';   // Hide URNbox
+            flexBox.style.display = 'block'; // Show flexBox
+            taxBandDisplay.style.display = 'none';  // Hide taxBandDisplay
+        } else if (this.value === 'General Eligibility') {
+            URNbox.style.display = 'block';  // Show URNbox
+            flexBox.style.display = 'none';  // Hide flexBox
+            taxBandDisplay.style.display = 'block';  // Show taxBandDisplay
+        } else {
+            URNbox.style.display = 'block';  // Show URNbox
+            flexBox.style.display = 'none';  // Hide flexBox
+            taxBandDisplay.style.display = 'none';  // Hide taxBandDisplay
+        }
+
+    });
+});
+
 document.getElementById('tenancySelect').addEventListener('change', function() {
     var landlordDiv = document.getElementById('landlordDiv');
     if (this.value === 'Private Tenant') {
@@ -6,6 +30,8 @@ document.getElementById('tenancySelect').addEventListener('change', function() {
         landlordDiv.style.display = 'none';  // Hide landlordDiv
     }
 });
+
+// MEASURE FUNCTIONS // 
 
 export function showMeasureRow(measureIndex) {
     // Define the IDs of the elements to show
@@ -32,6 +58,35 @@ export function showMeasureRow(measureIndex) {
             element.style.display = 'block'; // Show the element
         }
     });
-
-
 }
+
+let measureCount = 1;  // Initialize measure counter
+
+// Function to add and show a new measure row
+export function addMeasureRow() {
+    measureCount++;  // Increment the measure counter
+
+    // Call the existing function to show the measure row
+    showMeasureRow(measureCount);
+
+    if (measureCount >= 5) {
+        const addMeasureBtn = document.getElementById("measureAdd");
+        if (addMeasureBtn) {
+            addMeasureBtn.style.display = 'none';  // Hide the button
+        }
+    }
+}
+
+// Event listener for "Add another measure"
+export function setupMeasureAddButton() {
+    const addMeasureBtn = document.getElementById("measureAdd");
+
+    if (addMeasureBtn) {
+        addMeasureBtn.addEventListener("click", () => {
+            addMeasureRow();  // Add a new measure row when clicked
+        });
+    }
+}
+
+// Call this function to set up the listener on page load or when needed
+setupMeasureAddButton();

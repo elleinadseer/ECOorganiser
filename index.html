@@ -268,7 +268,7 @@
     <div id="measureAdd" class="addOn"> Add another measure </div>
 
     <section class="smartContainer gridFormat">
-    <div id="govScheme"> 
+        <div id="govScheme"> 
             <label for="scheme">Scheme</label>
                 <select id="schemeSelect">
                     <option></option>
@@ -277,14 +277,36 @@
                     <option id="GBIS">GBIS</option>
                     <option id="GE">General Eligibility</option>
                 </select>
-
-        <span class="inline"><label for="DWPmatch">DWP Match</label> 
-            <input type="checkbox" id="DWPmatch"></span>
         </div>
 
-        <div id="URNdisplay">
-            <label for="URN">URN</label>
-            <input type="number" id="URN">
+        <!-- <span class="inline"><label for="DWPmatch">DWP Match</label> 
+            <input type="checkbox" id="DWPmatch"></span>
+        </div>  -->
+
+        <div id="schemeNum">
+            <div id="URNdisplay">
+                <label for="URN">URN</label>
+                <input type="number" id="URN">
+            </div>
+
+            <div id="flexDisplay">
+                <label for="flexNum">Flex</label>
+                <input type="text" id="flexNum">
+            </div>
+
+            <div id="taxBandDisplay">
+                <span class="inline">
+                    <label for="DWPmatch">Tax Band</label> 
+                    <input type="checkbox" id="tbA"><label>A</label>
+                    <input type="checkbox" id="tbB"><label>B</label>
+                    <input type="checkbox" id="tbC"><label>C</label>
+                    <input type="checkbox" id="tbD"><label>D</label>
+                    <input type="checkbox" id="tbE"><label>E</label>
+                    <input type="checkbox" id="tbF"><label>F</label>
+                    <input type="checkbox" id="tbG"><label>G</label>
+                    <input type="checkbox" id="tbH"><label>H</label>
+                </span>
+            </div>
         </div>
 
         <div id="evidence"> 

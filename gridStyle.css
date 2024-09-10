@@ -37,7 +37,7 @@
   border-radius: 20px;
 }
 
-.smartContainer {  grid-template-areas:  "URN scheme evidence propType yearOf rdsap";
+.smartContainer {  grid-template-areas: "schemeNum scheme evidence propType yearOf rdsap";
   grid-template-rows: auto; 
   padding: 15px 0px; 
 }
@@ -71,7 +71,7 @@
 
 #measureAdd{grid-area: measureAdd}
 
-#URNdisplay {grid-area: URN}
+#schemeNum {grid-area: schemeNum}
 #govScheme {grid-area: scheme}
 #evidence {grid-area: evidence}
 #propType {grid-area: propType}
@@ -99,47 +99,6 @@
 
 #tel, #landlord {width: 124px;}
 #postcode {width: 80px;}
-
-.propContainer input { width: 90px;
-margin: 0px;
-margin-top: 8px; 
-}
-
-.leftSpace {
-  padding-left: 30px;
-}
-
-.addOn {
-  border: 1px grey solid;
-  border-radius: 0px 0px 10px 10px;
-  border-top: none;
-  padding: 6px 10px;
-  margin-bottom: 10px;
-}
-
-label, .addOn {
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: bold;
-  font-family: arial;
-}
-
-input, select {
-  box-sizing: border-box;
-  margin: 8px 0px;
-  padding: 3px;
-  border: 1px grey solid;}
-
-#measureAdd, #extensionAdd {
-  display: flex;
-  justify-content: center;
-}
-
-.inline {display: flex;
-  flex-direction: row;}
-
-.inline label /*DWPmatch*/ {padding-top: 7px;
-  width: 190px;}
 
 /* div {    background-color: #e5ffe5;
     border: 10px #e5ffe5 solid;
