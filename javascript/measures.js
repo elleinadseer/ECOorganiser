@@ -203,8 +203,6 @@ export function populateInstallerInfo(measure, measureIndex) {
     }
 }
 
-
-
 // Add event listeners to each measure dropdown
 document.addEventListener('DOMContentLoaded', function() {
     const measureDropdowns = [1, 2, 3, 4, 5].map(i => document.getElementById(`m${i}measureList`));
@@ -218,8 +216,91 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-/*
+/* COMPANIES CODE: 
+var verbose = false;
 
+// Data for installer companies.
+
+function Company(companyObject) {
+    this.address = companyObject.address || "";
+    this.assessor = companyObject.assessor || "British Assessment Bureau";
+    this.certificate = companyObject.certificate || "";
+    this.getAddress = function() {return this.address;};
+    this.getAssessor = function() {return this.assessor;};
+    this.getCert = function() {return this.certificate;};
+}
+
+if (verbose) console.println("[.object Companies]: Building Companies.");
+
+var Companies = {
+    "Energy Saving Group LTD": new Company({
+        address: "Mclaren Building, 46 The Priory Queensway, Birmingham, B4 7LR", 
+        certificate: "OCEI34330",
+    }),
+    "GOC Solutions LTD": new Company({
+        address: "343 Halliwell Road, Bolton, England, BL1 8DF"
+    }),
+    "Polar - ECO Services Limited": new Company({
+        address: "100 Grange Street, Normanton, Derby, DE23 8HA",
+        certificate: "NICI01509",
+        assessor: "NICEIC"
+    }),
+    "Next Generation Utilities": new Company({
+        address: "The Arrow Fifth Avenue, Team Valley Trading Estate, Gateshead, United Kingdom, NE11 0NG",
+        certificate: "OCEI47702"
+    }),
+    "Utilisas Consultant Limited": new Company({
+        address: "Unit 40 Meadowcroft Way, Leigh, United Kingdom, WN7 3XZ",
+        certificate: "OCEI36297"
+    }),
+    "Mario Insulation Ltd": new Company({
+        address: "Unit 35 Cable Street, Central Trading Estate, Wolverhampton, WV2 2RL",
+        certificate: "OCEI51420"
+    }),
+    "STM Services (NW) Ltd": new Company({
+        address: "11 Thornesgate Mews, Wakefield, West Yorkshire, WF2 8FJ",
+        certificate: "OCEI51879"
+    }),
+    "GRS Insulation Ltd": new Company({
+        address: "1 Brignell Road, Riverside Park, Middlesbrough, Teeside, TS2 1PS",
+        certificate: "OCEI44120"
+    }),
+    "Fourwinds Energy Ltd": new Company({
+        address: "Jhumat House 160, London Road, Barking, Essex, IG11 8BB",
+        certificate: "OCEI53633"
+    }),
+    "Taggas LTD": new Company({
+        address: "Unit 1 Ebor Court, Randall Park Way, Retford, DN22 8FQ"
+    }),
+    "Greentech Renewables LTD": new Company({
+        address: "Unit 8 Park Road, Bury, BL9 5BQ"
+    }),
+    "Renew Energies Ltd": new Company({
+        address: "119A Victoria Road West, Thornton Cleveleys, Lancashire, FY5 3LA"
+    })
+};
+
+
+RETROFIT COORDS:
+var RetrofitCoordinators = {
+    "Jade Lindo": {
+        company: "Independent Retrofit Coordinator",
+        address: "56 Teviot Grove, Birmingham, B38 9JX",
+        email: "Jaderetrofit@gmail.com",
+        number: "07395 811415",
+        trustmark: "2603950"
+    },
+    "Seema Joshi": {
+        company: "Energy Saving Group LTD",
+        address: Companies["Energy Saving Group LTD"].address,
+        email: "joshijoshi82@gmail.com",
+        number: "07703 782806",
+        trustmark: "2601637"
+    }
+};
+*/
+
+/*
 var MeasureToInstallers = {
     "GBU": "GASE",
     "FTCH": "GASE",

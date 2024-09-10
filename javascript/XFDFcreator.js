@@ -54,9 +54,7 @@ function populateFormData() {
 
     const formData = {
         [`Council Tax Band ${selectedTaxBand}`]: "Yes", // Dynamically set the property name
-        "General Eligibiility Job": tbPresent, // Set based on tax band selection
-        // ^ CHANGE ABOVE BACK TO CORRECT SPELLING ONCE YOU'VE SENT THE FORM TO DAVID
-
+        "General Eligibility Job": tbPresent, // Set based on tax band selection
 
         "Customer Name": `${document.getElementById('fName').value.trim()} ${document.getElementById('mName').value.trim()} ${document.getElementById('sName').value.trim()}`,
         "Customer Phone": document.getElementById('tel').value.trim(),
@@ -76,13 +74,13 @@ function populateFormData() {
         "EPC reference number": document.getElementById('rdsapNum').value.trim(),
         "Wall Age": document.getElementById('YOpropSelect').value.trim(),
 
-        "Main Present": "Yes",
         "PAS Measure 1": document.getElementById('m1measureList').value.trim(),
         "PAS Measure 1 Material Text": document.getElementById('m1material').value.trim(),
         "PAS Measure 1 Install Company": document.getElementById('m1installerCompany').value.trim(),
         "PAS Measure 1 Installer": document.getElementById('m1installerName').value.trim(),
         "PAS Measure 1 Cert": document.getElementById('m1PAScertNum').value.trim(),
 
+        "Main Present": "Yes",
         "Main Room Height 1": document.getElementById('roomHeight').value.trim(),
         "Main Room Height 2": document.getElementById('roomHeight2').value.trim(),
         "Main Wall Perimeter 1": document.getElementById('wallPerimeter').value.trim(),
@@ -91,6 +89,9 @@ function populateFormData() {
         "Main Roof Area": document.getElementById('floorArea').value.trim(),
         "Main Roof Area 2": document.getElementById('floorArea2').value.trim(),
 
+        "Handover Date": document.getElementById('installDateInput').value.trim(),
+
+        /* EXTENSIONS */
         "Extension 1 Present": document.getElementById('EX-prop').checked,
         "Extension 1 Wall Construction": document.getElementById('EX-wallConstructSelect').value.trim(),
         "Extension 1 Room Height 1": document.getElementById('EX-roomHeight').value.trim(),
@@ -101,14 +102,19 @@ function populateFormData() {
         "Extension 1 Roof Area": document.getElementById('EX-floorArea').value.trim(),
         "Extension 1 Roof Area 2": document.getElementById('EX-floorArea2').value.trim(),
 
-        "Handover Date": document.getElementById('installDateInput').value.trim()
+        /* MORE MEASURES */
+        "PAS Measure 2": document.getElementById('m2measureList').value.trim(),
+        "PAS Measure 2 Material Text": document.getElementById('m2material').value.trim(),
+        "PAS Measure 2 Install Company": document.getElementById('m2installerCompany').value.trim(),
+        "PAS Measure 2 Installer": document.getElementById('m2installerName').value.trim(),
+        "PAS Measure 2 Cert": document.getElementById('m2PAScertNum').value.trim(),
     };
 
     // Get the selected value from the "Occupancy Evidence" dropdown
     const selectedEvidence = document.getElementById('occupancyEvidenceDropdown').value.trim();
     // Switch case to set the correct formData value for "Utility bill"
     switch (selectedEvidence) {
-        case "Utility Bill": formData["Utility Bill"] = "Yes";
+        case "Utility bill": formData["Utility bill"] = "Yes";
             break;
         case "Mortgage Statement": formData["Mortgage Statement"] = "Yes";
             break;
