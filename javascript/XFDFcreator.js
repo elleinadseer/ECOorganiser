@@ -92,7 +92,9 @@ function populateFormData() {
 
         "Handover Date": document.getElementById('installDateInput').value.trim(),
 
-        /* EXTENSIONS */
+        /* EXTENSIONS 
+        PUT IN CODE TO CHECK EX1 PRESENT WHEN WRITTEN IN */
+
         "Extension 1 Present": document.getElementById('EX-prop').checked,
         "Extension 1 Wall Construction": document.getElementById('EX-wallConstructSelect').value.trim(),
         "Extension 1 Room Height 1": document.getElementById('EX-roomHeight').value.trim(),
