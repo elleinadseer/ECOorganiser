@@ -68,6 +68,7 @@ export function handlePdfExtraction() {
                         searchSubmission(postcode).then(function(record) {
                             console.log('Data retrieved from searchSubmission:', record);
                             selectDropdownOption('#schemeSelect', record.scheme);
+                            selectDropdownOption('#schemeSelect', record.eligibility);
                             document.getElementById('installDateInput').value = record.installDate || "";
 
                             record.measures.forEach(function(measure, index) {
@@ -77,8 +78,6 @@ export function handlePdfExtraction() {
                                 selectDropdownOption(dropdownId, measure);
                                 populateInstallerInfo(measure, measureIndex);
                             });
-
-                            document.getElementById('eligibility').value = record.eligibility || "";
                             console.log('Record Install Date:', record.installDate);
                         }).catch(function(error) {
                             console.error('Error retrieving data from Google Sheets:', error);
