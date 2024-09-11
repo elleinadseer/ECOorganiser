@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+
 // Get the value of the URN field and trim it
 function populateFormData() {
     var URNvalue = document.getElementById('URN').value.trim();
@@ -51,6 +53,8 @@ function populateFormData() {
     }
     const selectedTaxBand = getSelectedTaxBand();
     const tbPresent = selectedTaxBand ? "Yes" : "No"; // Set to "Yes" if any tax band is selected
+
+    console.log("Script is running");
 
     const formData = {
         [`Council Tax Band ${selectedTaxBand}`]: "Yes", // Dynamically set the property name
@@ -113,6 +117,57 @@ function populateFormData() {
         "PAS Measure 2 Cert": document.getElementById('m2PAScertNum').value.trim(),
     };
 
+    for (let measureIndex = 1; measureIndex <= 5; measureIndex++) {
+        // Dynamically construct the dropdown ID
+        var dropdownId = 'm' + measureIndex + 'measureList';  // No '#' symbol here
+        
+        // Get the dropdown element
+        var dropdownElement = document.getElementById(dropdownId);
+        
+        // Log the dropdown element to verify it exists
+        console.log(`Checking element with ID: ${dropdownId}`, dropdownElement);
+        
+        // Only handle the element if it exists
+        if (dropdownElement) {
+            const selectedMeasure = dropdownElement.value;
+            console.log(`Selected measure: ${selectedMeasure}`);
+
+            // Simplified if statements for each measure
+            if (selectedMeasure === "CWI") {
+                formData["CWI Installed"] = "Yes";
+            } else if (selectedMeasure === "IWI") {
+                formData["IWI Installed"] = "Yes";
+            } else if (selectedMeasure === "EWI") {
+                formData["EWI Installed"] = "Yes";
+            } else if (selectedMeasure === "GB") {
+                formData["Boiler Upgrade Installed"] = "Yes", formData["Load Comp Installed"] = "Yes";
+            } else if (selectedMeasure === "FTCH") {
+                formData["FTCH Installed"] = "Yes";
+            } else if (selectedMeasure === "ESH") {
+                formData["ESH Upgrade Installed"] = "Yes";
+            } else if (selectedMeasure === "LI") {
+                formData["LI Installed"] = "Yes", formData["Loft Insulation 100 or less"] = "Yes", formData["Loft Start Depth"] = "0", formData["Loft Final Depth"] = "300";
+            } else if (selectedMeasure === "FRI") {
+                formData["FRI Installed"] = "Yes";
+            } else if (selectedMeasure === "RIRI") {
+                formData["RIRI Installed"] = "Yes";
+            } else if (selectedMeasure === "PRT") {
+                formData["PRT Installed"] = "Yes";
+            } else if (selectedMeasure === "HC") {
+                formData["PRT Installed"] = "Yes", formData["TRV Installed"] = "Yes";
+            } else if (selectedMeasure === "TRV") {
+                formData["TRV Installed"] = "Yes";
+            } else if (selectedMeasure === "SPV") {
+                formData["SPV Installed"] = "Yes";
+            } else if (selectedMeasure === "ST") {
+                formData["Smart Thermostat Installed"] = "Yes";
+            } else if (selectedMeasure === "TTZC") {
+                formData["TTZC Installed"] = "Yes", formData["Exisiting Heating Controls"] = "Yes", formData["Exisiting Programmer"] = "Yes",
+                formData["Exisiting room Thermostat"] = "Yes", formData["Exisiting TRV"] = "Yes", formData["Property On Gas"] = "Yes";
+            }
+        }
+    }
+
     // Get the selected value from the "Occupancy Evidence" dropdown
     const selectedEvidence = document.getElementById('occupancyEvidenceDropdown').value.trim();
     // Switch case to set the correct formData value for "Utility bill"
@@ -145,11 +200,14 @@ function populateFormData() {
     } else {
         formData["Dwelling type"] = ""; // Default value if none matches
     }
-    
+
+    // MEASURES FILL OUTS
+
+    console.log(formData);
+
     return formData;
 }
 
-console.log(formData);
 
 function createXFDF(formData) {
     let xfdfContent = '<?xml version="1.0" encoding="UTF-8"?>\n';
