@@ -115,6 +115,24 @@ function populateFormData() {
         "PAS Measure 2 Install Company": document.getElementById('m2installerCompany').value.trim(),
         "PAS Measure 2 Installer": document.getElementById('m2installerName').value.trim(),
         "PAS Measure 2 Cert": document.getElementById('m2PAScertNum').value.trim(),
+
+        "PAS Measure 3": document.getElementById('m3measureList').value.trim(),
+        "PAS Measure 3 Material Text": document.getElementById('m3material').value.trim(),
+        "PAS Measure 3 Install Company": document.getElementById('m3installerCompany').value.trim(),
+        "PAS Measure 3 Installer": document.getElementById('m3installerName').value.trim(),
+        "PAS Measure 3 Cert": document.getElementById('m3PAScertNum').value.trim(),
+
+        "PAS Measure 4": document.getElementById('m4measureList').value.trim(),
+        "PAS Measure 4 Material Text": document.getElementById('m4material').value.trim(),
+        "PAS Measure 4 Install Company": document.getElementById('m4installerCompany').value.trim(),
+        "PAS Measure 4 Installer": document.getElementById('m4installerName').value.trim(),
+        "PAS Measure 4 Cert": document.getElementById('m4PAScertNum').value.trim(),
+
+        "PAS Measure 5": document.getElementById('m5measureList').value.trim(),
+        "PAS Measure 5 Material Text": document.getElementById('m5material').value.trim(),
+        "PAS Measure 5 Install Company": document.getElementById('m5installerCompany').value.trim(),
+        "PAS Measure 5 Installer": document.getElementById('m5installerName').value.trim(),
+        "PAS Measure 5 Cert": document.getElementById('m5PAScertNum').value.trim(),
     };
 
     for (let measureIndex = 1; measureIndex <= 5; measureIndex++) {
