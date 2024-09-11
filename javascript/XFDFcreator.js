@@ -32,12 +32,16 @@ function populateFormData() {
 
     var schemeSelectValue = document.getElementById('schemeSelect').value.trim();
 
+    var EX1inputs = document.querySelectorAll('input[id^="EX-"]');
+
     // Check if URN has a value and isn't blank
     var dwpDataMatched = URNvalue !== "" ? "Yes" : "No";
     var flexMatched = flexValue !== "" ? "Yes" : "No";
     var dwpURNvalue = flexValue !== "" ? flexValue : URNvalue;
 
     var gbisValue = (schemeSelectValue === "GBIS" || schemeSelectValue === "General Eligibility") ? "GBIS" : "";
+
+    var EX1fill = Array.from(EX1inputs).some(input => input.value.trim() !== "") ? "Yes" : "No";
 
     // Check which tax band is selected
     function getSelectedTaxBand() {
@@ -84,6 +88,8 @@ function populateFormData() {
         "PAS Measure 1 Installer": document.getElementById('m1installerName').value.trim(),
         "PAS Measure 1 Cert": document.getElementById('m1PAScertNum').value.trim(),
 
+        "Existing Radiator Count": document.getElementById('radNum').value.trim(),
+
         "Main Present": "Yes",
         "Main Wall Construction": document.getElementById('wallConstructSelect').value.trim(),
         "Main Room Height 1": document.getElementById('roomHeight').value.trim(),
@@ -99,7 +105,7 @@ function populateFormData() {
         /* EXTENSIONS 
         PUT IN CODE TO CHECK EX1 PRESENT WHEN WRITTEN IN */
 
-        "Extension 1 Present": document.getElementById('EX-prop').checked,
+        "Extension 1 Present": EX1fill,
         "Extension 1 Wall Construction": document.getElementById('EX-wallConstructSelect').value.trim(),
         "Extension 1 Room Height 1": document.getElementById('EX-roomHeight').value.trim(),
         "Extension 1 Room Height 2": document.getElementById('EX-roomHeight2').value.trim(),
@@ -180,8 +186,8 @@ function populateFormData() {
             } else if (selectedMeasure === "ST") {
                 formData["Smart Thermostat Installed"] = "Yes";
             } else if (selectedMeasure === "TTZC") {
-                formData["TTZC Installed"] = "Yes", formData["Exisiting Heating Controls"] = "Yes", formData["Exisiting Programmer"] = "Yes",
-                formData["Exisiting room Thermostat"] = "Yes", formData["Exisiting TRV"] = "Yes", formData["Property On Gas"] = "Yes";
+                formData["TTZC Installed"] = "Yes", formData["Existing Heating Controls"] = "Yes", formData["Existing Programmer"] = "Yes",
+                formData["Existing Room Thermostat"] = "Yes", formData["Existing TRV"] = "Yes", formData["Property On Gas"] = "Yes";
             }
         }
     }
@@ -198,7 +204,7 @@ function populateFormData() {
             break;
         case "Other": formData["Other"] = "Yes";
             break;
-        default: formData["Utility Bill"] = "No";  // Default to "No" if none is selected
+        default: formData["Utility bill"] = "No";  // Default to "No" if none is selected
             break;
     }
 

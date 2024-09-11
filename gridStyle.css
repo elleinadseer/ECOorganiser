@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-.gridFormat { grid-template-columns: 98px 150px 133px 170px 125px 121px;
+.gridFormat { grid-template-columns: 88px 150px 133px 170px 125px 121px;
   display: grid;
   justify-content: center;
   column-gap: 20px;

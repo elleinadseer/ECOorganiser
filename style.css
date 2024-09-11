@@ -10,7 +10,11 @@
     mediumseagreen (Label colour)
 */
 
-#evidence, #propType, #YOprop, #rdsap
+#totalFloorArea, #SAPrating, #rdsapNum {width: 93px;}
+
+/* #POPTs input {width: 85px;} */
+
+#evidence, #propType, #YOprop, #rdsap, #installerNameList
 {height: 55px} /* need to make tax band inline into it's own row seperate from grid to overcome this BS code*/
 
 #landlordDiv, 
@@ -20,6 +24,11 @@
 #m4measureListDiv, #m4materialsDD, #m4installerComps, #m4installerNameList, #m4PAScert, #m4POPTs, 
 #m5measureListDiv, #m5materialsDD, #m5installerComps, #m5installerNameList, #m5PAScert, #m5POPTs 
 { display: none; }
+
+#propertyType, #occupancyEvidenceDropdown {
+    font-size: 12px;
+    padding: 4px 0px;
+}
 
 [id^="EX-"] {
     /* display: none; */    
@@ -94,11 +103,25 @@ input, select {
     padding-left: 5px;
 }
 
-.inline input {margin-left: 79px;}
+.inline input {margin-left: 70px;}
 
 #taxBandDisplay {
     background-color: ghostwhite;
     border: 10px ghostwhite solid;
     border-radius: 10px;
     width: 880px;
+}
+
+#TTZCradRequest {
+    width: 420px;
+    color: red;
+}
+
+#radNum {
+    width: 35px;
+    margin-left: 10px;
+}
+
+label[for="roomHeight"] {
+    padding-right: 2px;
 }

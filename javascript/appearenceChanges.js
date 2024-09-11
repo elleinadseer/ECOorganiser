@@ -1,4 +1,62 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Declare variables to be in scope
+    const ttzcDiv = document.getElementById('TTZCradRequest');
+    const inputBox = document.getElementById('radNum'); // Replace with your input box ID
+
+    // Function to check measure dropdowns and show/hide TTZCradRequest
+    function checkMeasureDropdowns() {
+        let showTTZC = false;
+
+        // Loop over measure indexes
+        for (let measureIndex = 1; measureIndex <= 5; measureIndex++) {
+            const dropdownId = 'm' + measureIndex + 'measureList';
+            const dropdownElement = document.getElementById(dropdownId);
+
+            if (dropdownElement && dropdownElement.value === 'TTZC') {
+                showTTZC = true;
+                break;
+            }
+        }
+
+        if (ttzcDiv) {
+            ttzcDiv.style.display = showTTZC ? 'flex' : 'none';
+        } else {
+            console.log("Element with ID 'TTZCradRequest' not found.");
+        }
+    }
+
+    // Function to handle input box change
+    function handleInputChange() {
+        if (inputBox && ttzcDiv) {
+            ttzcDiv.style.color = inputBox.value.trim() ? 'black' : 'red';
+        } else {
+            console.log("Input box or target div not found.");
+        }
+    }
+
+    // Add event listener to the document for dropdown changes
+    document.addEventListener('change', function(event) {
+        // Check if the changed element is a measure dropdown
+        if (event.target.id.startsWith('m') && event.target.id.endsWith('measureList')) {
+            checkMeasureDropdowns();
+        }
+    });
+
+    // Initial check on page load
+    checkMeasureDropdowns();
+
+    // Add event listener to the input box
+    if (inputBox) {
+        inputBox.addEventListener('input', handleInputChange);
+    } else {
+        console.log("Input box with ID 'radNum' not found.");
+    }
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('schemeSelect').addEventListener('change', function() {
 
         var URNbox = document.getElementById('URNdisplay');
@@ -12,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (this.value === 'General Eligibility') {
             URNbox.style.display = 'block';  // Show URNbox
             flexBox.style.display = 'none';  // Hide flexBox
-            taxBandDisplay.style.display = 'block';  // Show taxBandDisplay
+            taxBandDisplay.style.display = 'flex';  // Show taxBandDisplay
         } else {
             URNbox.style.display = 'block';  // Show URNbox
             flexBox.style.display = 'none';  // Hide flexBox
@@ -90,3 +148,4 @@ export function setupMeasureAddButton() {
 
 // Call this function to set up the listener on page load or when needed
 setupMeasureAddButton();
+

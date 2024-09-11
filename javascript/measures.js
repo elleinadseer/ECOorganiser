@@ -131,6 +131,12 @@ const measureData = {
         materialUsed: ["SWIP + Knauf Earthwool Loftroll 44 BS EN 13501-1", "SWIP IWI System 18/5506"],
         PAScert: "OCEI34330"
     },
+    TTZC: {
+        company: "Energy Saving Group LTD",
+        installers: GASEinstallers,
+        materialUsed: ["RADBOT 1 SCV100 ErP Class VIII"],
+        PAScert: "OCEI34330"
+    },
 
     /* MCS Measures */
     ASHP: {
@@ -141,7 +147,7 @@ const measureData = {
         materialUsed: ["Provide"],
         PAScert: ""
     },
-    ASHP: {
+    SPV: {
         company: "Next Generation Utilities",
         installers: [  "Ryan Stokes",
         "Daniel Chadwick" ],
