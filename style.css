@@ -125,3 +125,8 @@ input, select {
 label[for="roomHeight"] {
     padding-right: 2px;
 }
+
+#dates {
+    border: #eeeeee 6px solid;
+    border-radius: 10px; 
+}
