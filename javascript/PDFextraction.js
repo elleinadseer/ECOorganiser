@@ -1,38 +1,12 @@
 import { populateInstallerInfo } from './measures.js';
 import { initClient, searchPostcode, searchSubmission } from './googleSheets.js';
-import { capitaliseFirstLetter, extractData, convertDateFormat, selectDropdownOption } from './helpers.js';
-
-function showMeasureRow(measureIndex) {
-    // Define the IDs of the elements to show
-    const measureListDiv = document.getElementById(`m${measureIndex}measureListDiv`);
-    const materialsDD = document.getElementById(`m${measureIndex}materialsDD`);
-    const installerComps = document.getElementById(`m${measureIndex}installerComps`);
-    const installerNameList = document.getElementById(`m${measureIndex}installerNameList`);
-    const PAScert = document.getElementById(`m${measureIndex}PAScert`);
-    const POPTs = document.getElementById(`m${measureIndex}POPTs`);
-
-    // Array of elements to show
-    const elementsToShow = [
-        measureListDiv,
-        materialsDD,
-        installerComps,
-        installerNameList,
-        PAScert,
-        POPTs
-    ];
-
-    // Iterate over each element and set its display property
-    elementsToShow.forEach(element => {
-        if (element) {
-            element.style.display = 'block'; // Show the element
-        }
-    });
-}
-
+import { capitaliseFirstLetter, extractData, selectDropdownOption } from './helpers.js';
+import { showMeasureRow } from './appearenceChanges.js';
 
 // Function to handle PDF extraction and form filling
 export function handlePdfExtraction() {
     document.getElementById('uploadPdf').addEventListener('change', function(e) {
+
         var file = e.target.files[0];
         var fileReader = new FileReader();
 
@@ -42,7 +16,6 @@ export function handlePdfExtraction() {
             pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
                 var allTextPromises = [];
 
-                // Loop through all the pages and get the text content
                 for (var i = 1; i <= pdf.numPages; i++) {
                     allTextPromises.push(pdf.getPage(i).then(function(page) {
                         return page.getTextContent().then(function(textContent) {
@@ -53,13 +26,11 @@ export function handlePdfExtraction() {
                     }));
                 }
 
-                // When all text contents are resolved, process the aggregated text
                 Promise.all(allTextPromises).then(function(pagesText) {
                     var text = pagesText.join(' ');
 
                     console.log("Extracted Text:", text);
 
-                    // Extract the data using regex
                     var extractedData = {
                         assessment_date: extractData(/Assessment Date\s+(\d{2}\/\d{2}\/\d{4})/, text),
                         submission_date: extractData(/Submission Date\s+(\d{2}\/\d{2}\/\d{4})/, text),
@@ -68,69 +39,52 @@ export function handlePdfExtraction() {
                         reference_number: extractData(/Reference\s+(\d+)/, text),
                         construction_year: extractData(/built in\s+[A-Z]\s+(\d{4}-\d{4})/, text),
                         property_type: extractData(/Property Type\s+(.+?)\s+Total Floor Area/, text),
-                        wall_type: extractData(/Wall Type:\s+(.+?)\s+Wall Insulation/, text),
-                        roof_type: extractData(/Roof Type:\s+(.+?),/, text),
+                        wall_type: extractData(/Wall Type:\s+[A-Z]{2}\s*(.+?)\s+Wall Insulation/, text),
+                        roof_type: extractData(/Roof Type:\s+\w+\s+(\w+)/, text),
+                        ex_wall_type: extractData(/1st Extension[\s\S]+?Wall Type:\s+[A-Z]{2}\s+([A-Za-z\s]+?)\s+Wall Insulation/, text),
+                        ex_roof_type: extractData(/1st Extension[\s\S]+?Roof Type:\s+\w+\s+([A-Za-z]+)/, text)
                     };
+
 
                     console.log("Extracted Data:", extractedData);
 
-                    // Extract the address using regex
                     var addressMatch = text.match(/Dwelling Address\s*(\d+),\s*(.+?),\s*([A-Z\s]+?),\s*([A-Z\d]{2,4}\s\d[A-Z]{2})/);
                     if (addressMatch) {
                         var addressNumber = addressMatch[1].trim();
                         var street = `${addressNumber} ${addressMatch[2].trim()}`;
                         var town = capitaliseFirstLetter(addressMatch[3].trim());
                         var postcode = addressMatch[4].trim();
-                    
-                        // Fill in the address fields
+
                         document.getElementById('postcode').value = postcode;
                         document.getElementById('street').value = street;
                         document.getElementById('town').value = town;
-                    
+
                         console.log('Address match results:', {
                             postcode: document.getElementById('postcode').value,
                             street: document.getElementById('street').value,
                             town: document.getElementById('town').value
                         });
 
-
                         searchSubmission(postcode).then(function(record) {
-                            // Log the data retrieved from searchSubmission function
                             console.log('Data retrieved from searchSubmission:', record);
-                        
-                            // Assuming you have form fields with these IDs and you want to fill them
                             selectDropdownOption('#schemeSelect', record.scheme);
+                            selectDropdownOption('#schemeSelect', record.eligibility);
                             document.getElementById('installDateInput').value = record.installDate || "";
-                        
-                            // Iterate over the record.measures array and fill the corresponding dropdowns
+
                             record.measures.forEach(function(measure, index) {
-                                // Determine the measure row index (1-based)
                                 const measureIndex = index + 1;
-
-                                // Show the respective measure row
                                 showMeasureRow(measureIndex);
-
-                                // Assuming measureList divs are named sequentially as m1measureList, m2measureList, etc.
                                 var dropdownId = '#m' + measureIndex + 'measureList';
                                 selectDropdownOption(dropdownId, measure);
-
-                                // Populate installer info for each measure
                                 populateInstallerInfo(measure, measureIndex);
                             });
-
-                            document.getElementById('eligibility').value = record.eligibility || "";
-                        
-                            console.log('Record Install Date:', record.installDate); // Log to verify the date value
-                        
+                            console.log('Record Install Date:', record.installDate);
                         }).catch(function(error) {
                             console.error('Error retrieving data from Google Sheets:', error);
                         });
 
-                        // Search for postcode and address number, then fill form
                         searchPostcode(postcode, addressNumber).then(function(record) {
-                            // Log the data retrieved from the searchPostcode function
                             console.log('Data retrieved from searchPostcode:', record);
-
                             document.getElementById('sName').value = record.surname || "";
                             document.getElementById('fName').value = record.forename || "";
                             document.getElementById('URN').value = record.urn || "";
@@ -138,54 +92,111 @@ export function handlePdfExtraction() {
                             console.error('Error retrieving data from Google Sheets:', error);
                         });
 
-                        // Additional data extraction
-                        var match = text.match(/Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
-                        if (match) {
-                            var floorArea = match[1];
-                            var roomHeight = match[2];
-                            var wallPerimeter = match[3];
+                        // Match the Main building part for Lowest floor and First floor
+                        var mainMatchLowest = text.match(/Main[\s\S]+?Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+                        var mainMatchFirst = text.match(/Main[\s\S]+?First floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
 
-                            // Log the extracted values
-                            console.log('Extracted values:', {
-                                floorArea: floorArea,
-                                roomHeight: roomHeight,
-                                wallPerimeter: wallPerimeter
+                        // Process the matches for the Main building
+                        if (mainMatchLowest) {
+                            var mainFloorArea = mainMatchLowest[1];
+                            var mainRoomHeight = mainMatchLowest[2];
+                            var mainWallPerimeter = mainMatchLowest[3];
+
+                            console.log('Extracted values for Main - Lowest floor:', {
+                                floorArea: mainFloorArea,
+                                roomHeight: mainRoomHeight,
+                                wallPerimeter: mainWallPerimeter
                             });
 
-                            // Fill the form fields with the extracted values
-                            document.getElementById('floorArea').value = floorArea || "";
-                            document.getElementById('roomHeight').value = roomHeight || "";
-                            document.getElementById('wallPerimeter').value = wallPerimeter || "";
+                            document.getElementById('floorArea').value = mainFloorArea || "";
+                            document.getElementById('roomHeight').value = mainRoomHeight || "";
+                            document.getElementById('wallPerimeter').value = mainWallPerimeter || "";
+                        }
+
+                        if (mainMatchFirst) {
+                            var mainFloorArea2 = mainMatchFirst[1];
+                            var mainRoomHeight2 = mainMatchFirst[2];
+                            var mainWallPerimeter2 = mainMatchFirst[3];
+                        
+                            console.log('Extracted values for Main - First floor:', {
+                                floorArea: mainFloorArea2,
+                                roomHeight: mainRoomHeight2,
+                                wallPerimeter: mainWallPerimeter2
+                            });
+                        
+                            document.getElementById('floorArea2').value = mainFloorArea2 || "";
+                            document.getElementById('roomHeight2').value = mainRoomHeight2 || "";
+                            document.getElementById('wallPerimeter2').value = mainWallPerimeter2 || "";
                         } else {
                             console.log('No match found in the text.');
                         }
+
+                        // Match the 1st Extension building part for Lowest floor and First floor
+                        var extensionMatchLowest = text.match(/1st Extension[\s\S]+?Lowest floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+                        var extensionMatchFirst = text.match(/1st Extension[\s\S]+?First floor\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+
+                        // Process the matches for the 1st Extension building
+                        if (extensionMatchLowest) {
+                            var exFloorArea = extensionMatchLowest[1];
+                            var exRoomHeight = extensionMatchLowest[2];
+                            var exWallPerimeter = extensionMatchLowest[3];
+
+                            console.log('Extracted values for 1st Extension - Lowest floor:', {
+                                floorArea: exFloorArea,
+                                roomHeight: exRoomHeight,
+                                wallPerimeter: exWallPerimeter
+                            });
+
+                            document.getElementById('EX-floorArea').value = exFloorArea || "";
+                            document.getElementById('EX-roomHeight').value = exRoomHeight || "";
+                            document.getElementById('EX-wallPerimeter').value = exWallPerimeter || "";
+                        }
+
+                        if (extensionMatchFirst) {
+                            var exFloorArea2 = extensionMatchFirst[1];
+                            var exRoomHeight2 = extensionMatchFirst[2];
+                            var exWallPerimeter2 = extensionMatchFirst[3];
+
+                            console.log('Extracted values for 1st Extension - First floor:', {
+                                floorArea: exFloorArea2,
+                                roomHeight: exRoomHeight2,
+                                wallPerimeter: exWallPerimeter2
+                            });
+
+                            document.getElementById('EX-floorArea2').value = exFloorArea2 || "";
+                            document.getElementById('EX-roomHeight2').value = exRoomHeight2 || "";
+                            document.getElementById('EX-wallPerimeter2').value = exWallPerimeter2 || "";
+                        }
+
+
                     }
 
-                    // Fill the form fields with the extracted data
                     document.getElementById('surveyDate').value = extractedData.assessment_date || "";
                     document.getElementById('submissionDate').value = extractedData.submission_date || "";
                     document.getElementById('totalFloorArea').value = extractedData.total_floor_area || "";
                     document.getElementById('SAPrating').value = extractedData.current_efficiency_rating || "";
                     document.getElementById('rdsapNum').value = extractedData.reference_number || "";
-                    document.getElementById('propType').value = extractedData.property_type || "";
-                    document.getElementById('wallConstruct').value = extractedData.wall_type || "";
-                    document.getElementById('roofTypes').value = extractedData.roof_type || "";
 
-                    // Select the appropriate option in the dropdowns
+                    selectDropdownOption('#propertyType', extractedData.property_type);
                     selectDropdownOption('#YOpropSelect', extractedData.construction_year);
                     selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
+
+                    selectDropdownOption('#roofType', extractedData.roof_type);
                     selectDropdownOption('#wallConstructSelect', extractedData.wall_type);
 
-                    // Optionally submit the form
-                    // document.getElementById('myForm').submit();
-                });
+                    // Select the dropdown options for the 1st Extension building part
+                    selectDropdownOption('#EX-roofType', extractedData.ex_roof_type);
+                    selectDropdownOption('#EX-wallConstructSelect', extractedData.ex_wall_type);
 
+
+                });
             });
         };
 
         fileReader.readAsArrayBuffer(file);
     });
 }
+
 
 // Load Google API client and initialize PDF extraction
 gapi.load('client', initClient);

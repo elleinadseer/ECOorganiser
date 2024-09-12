@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xfdf xmlns="http://ns.adobe.com/xfdf/">
+  <fields>
+
+    <field name="Customer Name">
+      <value>Danielle Rees</value>
+    </field>
+    
+    <field name="Customer Phone">
+      <value>01234567</value>
+    </field>
+
+    <field name="Customer Address">
+      <value>134 Bleak Hill Road, Erdington, Birmingham, B23 7BT</value>
+    </field>
+
+  </fields>
+</xfdf>

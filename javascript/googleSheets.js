@@ -74,21 +74,29 @@ export function searchSubmission(postcode) {
                 var schemeMatch = measureScheme.match(/\(([^)]+)\)/);
                 var scheme = schemeMatch ? schemeMatch[1] : ""; // Extract the first match or set to empty string if none
 
-                    var measures = measureScheme
-                        .replace(/\([^)]*\)/g, '') // Remove text within brackets
-                        .replace(/[\+\-/]/g, '') // Remove special characters
-                        .split(/\s+/) // Split by whitespace
-                        .filter(word => /^[a-zA-Z]+$/.test(word)); // Keep only text
+                var measures = measureScheme
+                    .replace(/\([^)]*\)/g, '') // Remove text within brackets
+                    .replace(/[\+\-/]/g, '') // Remove special characters
+                    .split(/\s+/) // Split by whitespace
+                    .filter(word => /^[a-zA-Z]+$/.test(word)); // Keep only text
+                
+                var installDate = row[5]; // Column G (index 5)
+                var eligibility = row[4]; // Column F (index 4)
+                
+                // Check the value in eligibility
+                if (eligibility === "GE") {
+                    eligibility = "General Eligibility";
+                } else if (eligibility.startsWith("E0")) {
+                    eligibility = "Flex";
+                }
                     
-                    var installDate = row[5]; // Column G (index 5)
-                    var eligibility = row[4]; // Column F (index 4)
-
                     return {
                         scheme: scheme,
                         measures: measures,
                         installDate: installDate,
                         eligibility: eligibility
                     };
+                    
                 }
             }
             throw new Error('Postcode found, but no matching terms in column B.');

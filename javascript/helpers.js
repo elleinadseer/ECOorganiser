@@ -9,19 +9,31 @@ export function extractData(pattern, text) {
     return match ? match[1].trim() : null;
 }
 
-export function convertDateFormat(dateStr) {
-    var parts = dateStr.split('/');
-    return `${parts[2]}-${parts[1]}-${parts[0]}`;
-}
-
 export function selectDropdownOption(dropdownSelector, extractedValue) {
     var selectElement = document.querySelector(dropdownSelector);
-    var options = selectElement.options;
+    if (!selectElement) {
+        console.error('Dropdown element not found:', dropdownSelector);
+        return;
+    }
 
+    var options = selectElement.options;
+    var trimmedValue = extractedValue.trim();
+
+    var found = false;
     for (var i = 0; i < options.length; i++) {
-        if (options[i].text === extractedValue) {
+        if (options[i].text.trim().toLowerCase() === trimmedValue.toLowerCase()) {
             options[i].selected = true;
+            found = true;
             break;
         }
     }
+
+    if (!found) {
+        console.error('Option not found in dropdown:', trimmedValue);
+    }
+
+    // Dispatch the change event manually
+    var event = new Event('change', { bubbles: true });
+    selectElement.dispatchEvent(event);
 }
+

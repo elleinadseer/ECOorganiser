@@ -3,64 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Text Extractor</title>
-    <!-- Load PDF.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <title>PDF-lib Example</title>
 </head>
 <body>
-    <h1>PDF Text Extractor</h1>
-    <input type="file" id="uploadPdf" accept="application/pdf">
-    <h3>Extracted Text:</h3>
-    <div id="extractedText" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; width: 80%; height: 300px; overflow-y: scroll;"></div>
+    <h1>PDF-lib Example</h1>
+    <input type="file" id="pdfFileInput" accept="application/pdf" />
+    <button id="listFieldsButton">List Form Fields</button>
+    <pre id="output"></pre>
 
+    <!-- Include pdf-lib from CDN -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script>
-        document.getElementById('uploadPdf').addEventListener('change', function(e) {
-            var file = e.target.files[0];
-            var fileReader = new FileReader();
+        document.getElementById('listFieldsButton').addEventListener('click', async () => {
+            const fileInput = document.getElementById('pdfFileInput');
+            const output = document.getElementById('output');
 
-            fileReader.onload = function() {
-                var typedarray = new Uint8Array(this.result);
+            if (fileInput.files.length === 0) {
+                output.textContent = 'Please select a PDF file first.';
+                return;
+            }
 
-                pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
-                    console.log("PDF loaded");  // Debugging line
+            const file = fileInput.files[0];
+            const arrayBuffer = await file.arrayBuffer();
+            const { PDFDocument } = PDFLib;
+            const pdfDoc = await PDFDocument.load(arrayBuffer);
 
-                    var totalPages = pdf.numPages;
-                    var extractedText = [];
+            // Get the form
+            const form = pdfDoc.getForm();
+            const fields = form.getFields();
 
-                    function extractPageText(pageNumber) {
-                        return pdf.getPage(pageNumber).then(function(page) {
-                            return page.getTextContent().then(function(textContent) {
-                                var pageText = textContent.items.map(function(item) {
-                                    return item.str;
-                                }).join(' ');
-
-                                extractedText.push(pageText);
-
-                                // If there are more pages, extract the next one
-                                if (pageNumber < totalPages) {
-                                    return extractPageText(pageNumber + 1);
-                                } else {
-                                    return extractedText.join('\n\n'); // Combine all pages' text
-                                }
-                            });
-                        });
-                    }
-
-                    extractPageText(1).then(function(fullText) {
-                        document.getElementById('extractedText').textContent = fullText;
-
-                        // Log the extracted text for debugging
-                        console.log(fullText);
-                    }).catch(function(error) {
-                        console.error("Error extracting text: ", error);
-                    });
-
-                }).catch(function(error) {
-                    console.error("Error loading PDF: ", error);  // Debugging line
-                });
-            };
-
-            fileReader.readAsArrayBuffer(file);
+            // Display the field names
+            output.textContent = 'Field names:\n';
+            fields.forEach(field => {
+                output.textContent += `${field.getName()}\n`;
+            });
         });
     </script>
 </body>
