@@ -86,7 +86,7 @@ export function searchSubmission(postcode) {
                 // Check the value in eligibility
                 if (eligibility === "GE") {
                     eligibility = "General Eligibility";
-                } else if (eligibility.startsWith("E0")) {
+                } else if (eligibility.startsWith("E0") || eligibility.includes("FLEX")) {
                     eligibility = "Flex";
                 }
                     
