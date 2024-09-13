@@ -1,34 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Declare variables to be in scope
-    const ttzcDiv = document.getElementById('TTZCradRequest');
-    const inputBox = document.getElementById('radNum'); // Replace with your input box ID
+    const radRequest = document.getElementById('radRequest');
+    const inputBox = document.getElementById('radNum'); 
 
-    // Function to check measure dropdowns and show/hide TTZCradRequest
+    // Function to check measure dropdowns and show/hide radRequest
     function checkMeasureDropdowns() {
-        let showTTZC = false;
+        let showRad = false;
 
         // Loop over measure indexes
         for (let measureIndex = 1; measureIndex <= 5; measureIndex++) {
             const dropdownId = 'm' + measureIndex + 'measureList';
             const dropdownElement = document.getElementById(dropdownId);
 
-            if (dropdownElement && dropdownElement.value === 'TTZC') {
-                showTTZC = true;
+            if (dropdownElement && ['TTZC', 'GB', 'HC'].includes(dropdownElement.value)) {
+                showRad = true;
                 break;
             }
         }
 
-        if (ttzcDiv) {
-            ttzcDiv.style.display = showTTZC ? 'flex' : 'none';
+        if (radRequest) {
+            radRequest.style.display = showRad ? 'flex' : 'none';
         } else {
-            console.log("Element with ID 'TTZCradRequest' not found.");
+            console.log("Element with ID 'radRequest' not found.");
         }
     }
 
     // Function to handle input box change
     function handleInputChange() {
-        if (inputBox && ttzcDiv) {
-            ttzcDiv.style.color = inputBox.value.trim() ? 'black' : 'red';
+        if (inputBox && radRequest) {
+            radRequest.style.color = inputBox.value.trim() ? 'black' : 'red';
         } else {
             console.log("Input box or target div not found.");
         }

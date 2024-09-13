@@ -175,7 +175,7 @@ function populateFormData() {
             } else if (selectedMeasure === "PRT") {
                 formData["PRT Installed"] = "Yes";
             } else if (selectedMeasure === "HC") {
-                formData["PRT Installed"] = "Yes", formData["TRV Installed"] = "Yes";
+                formData["PRT Installed"] = "Yes", formData["TRVs Installed"] = "Yes";
             } else if (selectedMeasure === "TRV") {
                 formData["TRV Installed"] = "Yes";
             } else if (selectedMeasure === "SPV") {
@@ -184,7 +184,7 @@ function populateFormData() {
                 formData["Smart Thermostat Installed"] = "Yes";
             } else if (selectedMeasure === "TTZC") {
                 formData["TTZC Installed"] = "Yes", formData["Existing Heating Controls"] = "Yes", formData["Existing Programmer"] = "Yes",
-                formData["Existing Room Thermostat"] = "Yes", formData["Existing TRV"] = "Yes", formData["Property On Gas"] = "Yes";
+                formData["Existing Room Thermostat"] = "Yes", formData["Existing TRV"] = "Yes", formData["Property On Gas"] = "Yes", formData["Yes Bypass"] = "Yes";
             }
         }
     }
