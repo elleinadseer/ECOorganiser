@@ -27,21 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Get the value of the URN field and trim it
 function populateFormData() {
+    var EX1inputs = document.querySelectorAll('input[id^="EX-"]');
+    var EX1fill = Array.from(EX1inputs).some(input => input.value.trim() !== "") ? "Yes" : "No";
+
     var URNvalue = document.getElementById('URN').value.trim();
     var flexValue = document.getElementById('flexNum').value.trim();
-
-    var schemeSelectValue = document.getElementById('schemeSelect').value.trim();
-
-    var EX1inputs = document.querySelectorAll('input[id^="EX-"]');
-
     // Check if URN has a value and isn't blank
     var dwpDataMatched = URNvalue !== "" ? "Yes" : "No";
     var flexMatched = flexValue !== "" ? "Yes" : "No";
     var dwpURNvalue = flexValue !== "" ? flexValue : URNvalue;
 
+    var schemeSelectValue = document.getElementById('schemeSelect').value.trim();
     var gbisValue = (schemeSelectValue === "GBIS" || schemeSelectValue === "General Eligibility") ? "GBIS" : "";
-
-    var EX1fill = Array.from(EX1inputs).some(input => input.value.trim() !== "") ? "Yes" : "No";
 
     // Check which tax band is selected
     function getSelectedTaxBand() {
