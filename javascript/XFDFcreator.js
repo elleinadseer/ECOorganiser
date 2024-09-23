@@ -31,11 +31,12 @@ function populateFormData() {
     var EX1fill = Array.from(EX1inputs).some(input => input.value.trim() !== "") ? "Yes" : "No";
 
     var URNvalue = document.getElementById('URN').value.trim();
+    var dwpURNvalue = flexValue !== "" ? flexValue : URNvalue;
+
     var flexValue = document.getElementById('flexNum').value.trim();
     // Check if URN has a value and isn't blank
     var dwpDataMatched = URNvalue !== "" ? "Yes" : "No";
     var flexMatched = flexValue !== "" ? "Yes" : "No";
-    var dwpURNvalue = flexValue !== "" ? flexValue : URNvalue;
 
     var schemeSelectValue = document.getElementById('schemeSelect').value.trim();
     var gbisValue = (schemeSelectValue === "GBIS" || schemeSelectValue === "General Eligibility") ? "GBIS" : "";
